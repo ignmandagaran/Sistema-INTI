@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2019 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="31.9175mm" height="13.8648mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1484.04 644.66"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#00358E}
+    .fil0 {fill:#00B5E2}
+    .fil2 {fill:#00358E;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Capa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2508249916880">
+   <path class="fil0" d="M322.32 0c178.02,0 322.33,144.31 322.33,322.33 0,178.01 -144.31,322.33 -322.33,322.33 -178.01,0 -322.32,-144.31 -322.32,-322.33 0,-178.02 144.31,-322.33 322.32,-322.33zm-135.33 187l270.65 0 0 270.66 -270.65 0 0 -270.66z"/>
+   <path class="fil1" d="M49.21 49.21l546.24 0 0 546.23 -546.24 0 0 -546.23zm137.79 137.79l270.65 0 0 270.66 -270.65 0 0 -270.66z"/>
+   <polygon class="fil2" points="728.17,189.3 812.14,189.3 812.14,460.12 728.17,460.12 "/>
+   <polygon id="1" class="fil2" points="851.55,189.3 929.65,189.3 1031.21,338.83 1031.21,189.3 1110.26,189.3 1110.26,460.12 1031.21,460.12 930.22,311.41 930.22,460.12 851.55,460.12 "/>
+   <polygon id="2" class="fil2" points="1125.78,189.3 1380.33,189.3 1380.33,256.24 1294.85,256.24 1294.85,460.12 1211.26,460.12 1211.26,256.24 1125.78,256.24 "/>
+   <polygon id="3" class="fil2" points="1400.07,189.3 1484.04,189.3 1484.04,460.12 1400.07,460.12 "/>
+  </g>
+ </g>
+</svg>
