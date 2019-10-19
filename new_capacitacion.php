@@ -48,10 +48,12 @@ include 'vendor/php/conexion.php';
                 <div class="form-group col-md-6">
                   <label for="selectTipo">Tipo</label>
                   <select class="form-control" id="selectTipo" name="tipo">
-                      <option>Seleccionar...</option>
-                      <option>Taller</option>
-                      <option>Curso</option>
-                      <option>Seminario</option>
+                  <?php 
+                //Ciclo donde se trae todos los tipos de capacitacion (visibles) de la base de datos. variable $enlace heredada de conexion.php
+               foreach ($enlace->query($query_tipo_capacitacion) as $row){
+                return '<option value="'.$row[id_proyecto].'">'. ($row[tipo_capacitacion]).'</option>';
+                }
+                ?>
                   </select>
                 </div>
               </div>
@@ -63,7 +65,7 @@ include 'vendor/php/conexion.php';
                <?php 
                 //Ciclo donde se trae todos los proyectos (visibles) de la base de datos. variable $enlace heredada de conexion.php
                foreach ($enlace->query($query_proyectos) as $row){
-                return '<option value="'.$row[id_proyecto].'">'. utf8_encode($row[titulo_proyecto]).'</option>';
+                return '<option value="'.$row[id_proyecto].'">'. ($row[titulo_proyecto]).'</option>';
                 }
                 ?>
                     </select>
