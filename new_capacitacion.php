@@ -8,7 +8,7 @@ include 'vendor/php/conexion.php';
 <html lang="en">
 
 <!-- Header include-->
-<?php $title = "Nuevo Cliente"; 
+<?php $title = "Nueva Capacitación"; 
       include 'vendor/php/includes/header.php' ?>
 
   <body id="page-top">
@@ -33,69 +33,50 @@ include 'vendor/php/conexion.php';
           <li class="breadcrumb-item active">Nueva Capacitación</li>
         </ol>
        
-        
-      
         <!-- Area Chart Example-->
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-fw fa-plus-circle"></i>
             Agregar nueva capacitación</div>
           <div class="card-body">
-            <form>
+            <form action="add_capacitacion.php" method="POST">
               <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                   <label for="inputTitulo">Titulo</label>
-                  <input type="text" class="form-control" id="inputTitulo" placeholder="Ingresar titulo de la capacitación">
+                  <input type="text" class="form-control" id="inputTitulo" name="titulo" placeholder="Ingresar titulo de la capacitación">
                 </div>
-                
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                   <label for="selectTipo">Tipo</label>
-                  <select class="form-control" id="selectTipo">
+                  <select class="form-control" id="selectTipo" name="tipo">
                       <option>Seleccionar...</option>
                       <option>Taller</option>
                       <option>Curso</option>
                       <option>Seminario</option>
                   </select>
                 </div>
-                
-                <div class="form-group col-md-4">
-                    <label for="sel1">Selecciona proyecto:</label><!--opcion mas simple, aparece solo esto con ninguno cargado por defecto, si selecciona un proyecto automaticamente indica que si esta relacionado, opto por esta opcion-->
-                    <select class="form-control" id="sel1">
-                      <option>Ninguno</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
+              </div>
+              <div class="form-row">
+              <div class="form-group col-md-6">
+                    <label for="sel1">Selecciona proyecto:</label>
+                    <select class="form-control" id="sel1" name="proyecto">
+                   
+               <?php 
+                //Ciclo donde se trae todos los proyectos (visibles) de la base de datos. variable $enlace heredada de conexion.php
+               foreach ($enlace->query($query_proyectos) as $row){
+                return '<option value="'.$row[id_proyecto].'">'. utf8_encode($row[titulo_proyecto]).'</option>';
+                }
+                ?>
                     </select>
                 </div> 
-
-              </div>
-              
-                 <!-- <label>Indicar si esta vinculada a un proyecto</label>
-              </div>
-                 <div> <label class="radio-inline"><input type="radio" name="optradio">si</label>
-               si selecciona si debe indicar cual esel proyecto
-              
-          
-               
-                </div>
-              <div><label class="radio-inline"><input type="radio" name="optradio">no</label></div>
-              si selecciona no, desabilita la lista
-              </div> -->
-              
-              <div class="form-row">                  
                   <div class="form-group date form_datetime col-md-6">
                       <label class="control-label" for="datetimepicker-default">Fecha Inicio</label>
-                      <input type='text' class="form-control" id='datetimepicker1' placeholder="Ingresar fecha..." />
-                    </div>
-                    <div class="form-group date form_datetime col-md-6">
-                        <label class="control-label" for="datetimepicker-default">Fecha Fin</label>
-                        <input type='text' class="form-control" id='datetimepicker2' placeholder="Ingresar fecha..." />
+                      <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha..." />
                     </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-12">
                   <label for="inputAddress2">Observaciones</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ingresar observaciones"></textarea>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" name="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>
                 </div>
               </div>
               <a href="buscar_capacitacion.html"><p>Puede ver las capacitaciones AQUI</p></a>
