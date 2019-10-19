@@ -81,7 +81,7 @@ include 'vendor/php/conexion.php';
                   <textarea class="form-control" id="exampleFormControlTextarea1" name="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>
                 </div>
               </div>
-              <a href="buscar_capacitacion.html"><p>Puede ver las capacitaciones AQUI</p></a>
+              <a href="buscar_capacitacion.php"><p>Puede ver las capacitaciones AQUI</p></a>
               <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
           </div>
