@@ -9,7 +9,11 @@ $query_provincias = "SELECT id_provincia, provincia FROM `provincias` WHERE visi
 $query_proyectos = "SELECT id_proyecto, titulo_proyecto FROM 'proyectos' WHERE visible=1 ";
 
 //Query para cargar tipos de capacitacion (visibles) en select
-$query_proyectos = "SELECT id_proyecto, tipo_capacitacion FROM 'tipo_capacitaciones' WHERE visible=1 ";
+$query_tipo_capacitacion = "SELECT id_tipo_capacitacion, tipo_capacitacion FROM 'tipo_capacitaciones' WHERE visible=1 ";
+
+//Query para cargar titulos de capacitacion (visibles) en select
+$query_titulo_capacitacion = "SELECT id_capacitacion, titulo_capacitacion FROM 'tipo_capacitaciones' WHERE visible=1 ";
+
 
 
 /*function selectProvincias (){

@@ -39,7 +39,7 @@ include 'vendor/php/conexion.php';
             <i class="fas fa-fw fa-plus-circle"></i>
             Agregar nueva capacitación</div>
           <div class="card-body">
-            <form action="add_capacitacion.php" method="POST">
+            <form action="add.php" method="POST"> 
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputTitulo">Titulo</label>
@@ -51,7 +51,7 @@ include 'vendor/php/conexion.php';
                   <?php 
                 //Ciclo donde se trae todos los tipos de capacitacion (visibles) de la base de datos. variable $enlace heredada de conexion.php
                foreach ($enlace->query($query_tipo_capacitacion) as $row){
-                return '<option value="'.$row[id_proyecto].'">'. ($row[tipo_capacitacion]).'</option>';
+                return '<option value="'.$row[id_tipo_capacitacion].'">'. ($row[tipo_capacitacion]).'</option>';
                 }
                 ?>
                   </select>

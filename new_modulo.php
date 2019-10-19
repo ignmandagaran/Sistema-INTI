@@ -45,10 +45,12 @@ include 'vendor/php/conexion.php';
                       <label for="tema">Capacitación</label>
                       <select class="form-control" id="select_id">
                         <option>Seleccione título capacitación...</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <?php
+                        //Ciclo donde se trae todos los titulos de capacitaciones (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                          foreach ($enlace->query($query_titulo_capacitacion) as $row){
+                          return '<option value="'.$row[id_capacitacion].'">'. ($row[titulo_capacitacion]).'</option>';
+                          }
+                         ?>
                       </select>
                       </div>
                 <!--<div class="form-group col-md-2 col-6">
