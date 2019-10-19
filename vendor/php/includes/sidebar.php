@@ -55,6 +55,8 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="new_capacitacion.php"><i class="fas fa-plus-circle"></i>&nbsp;Nueva capacitación</a>
           <a class="dropdown-item" href="buscar_capacitacion.php"><i class="fas fa-search"></i>&nbsp;Buscar capacitación</a>
+          <a class="dropdown-item" href="new_modulo.php"><i class="fas fa-plus-circle"></i>&nbsp;Nuevo módulo</a>
+          <a class="dropdown-item" href="buscar_modulo.php"><i class="fas fa-search"></i>&nbsp;Buscar módulos</a>
         </div>
       </li>
       <li class="nav-item dropdown">
