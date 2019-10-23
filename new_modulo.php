@@ -30,7 +30,7 @@ include 'vendor/php/conexion.php';
           <li class="breadcrumb-item">
             <a href="#">Panel de control</a>
           </li>
-          <li class="breadcrumb-item active">Nuevo Módulo de Capacitación</li>
+          <li class="breadcrumb-item active">Nuevo Módulo</li>
         </ol>
 
         <!-- Area Chart Example-->
@@ -39,39 +39,29 @@ include 'vendor/php/conexion.php';
             <i class="fas fa-fw fa-plus-circle"></i>
             Agregar nuevo módulo</div>
           <div class="card-body">
-            <form>
+            <form action="vendor/php/add_modulo.php" method="POST">
               <div class="form-row">
                   <div class="form-group col-md-4 col-sm-4">
                       <label for="tema">Capacitación</label>
-                      <select class="form-control" id="select_id">
-                        <option>Seleccione título capacitación...</option>
-                        <?php
-                        //Ciclo donde se trae todos los titulos de capacitaciones (visibles) de la base de datos. variable $enlace heredada de conexion.php
-                          foreach ($enlace->query($query_titulo_capacitacion) as $row){
-                          return '<option value="'.$row[id_capacitacion].'">'. ($row[titulo_capacitacion]).'</option>';
-                          }
-                         ?>
+                      <select class="form-control" id="select_id" name="capacitacion" required>
+                        <option value=''>Seleccione título...</option>
+                        <?php 
+                        //Ciclo donde se trae todos los títulos de capacitación (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                       foreach($enlace->query($query_titulo_capacitaciones) AS $opciones): ?>
+                       <option value="<?php echo $opciones ['id_capacitacion'] ?>"> <?php echo $opciones ['titulo_capacitacion'] ?></option>
+                       <?php endforeach ?>  
                       </select>
                       </div>
-                <!--<div class="form-group col-md-2 col-6">
-                  <label for="inputCuit" >&nbsp;</label>
-                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99999999">
-                </div>-->
-                <!--<div class="form-group col-md-1 col-3">
-                  <label for="inputCuit">&nbsp;</label>
-                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="9">
-                </div>-->
-                
                 <div class="form-group col-md-8 col-sm-12">
                   <label for="inputTitulo">Titulo del Modulo</label>
-                  <input type="text" class="form-control" id="inputTitulo" placeholder="Ingrese un titulo al modulo de capacitaci�n...">
+                  <input type="text" require class="form-control" id="inputTitulo" name="titulo" placeholder="Ingrese título..." required>
                 </div>
               </div>
               <div class="form-row">
                   <div class="form-group col-md-6 col-sm-4">
                       <label for="tema">Tema</label>
-                      <select class="form-control" id="selectTema">
-                        <option>Seleccione un tema...</option>
+                      <select class="form-control" id="selectTema" name="tema">
+                        <option value="">Seleccione tema...</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
@@ -80,53 +70,55 @@ include 'vendor/php/conexion.php';
                       </div>
                       <div class="form-group col-md-6 col-sm-4">
                           <label for="tema">Localidad </label>
-                          <select class="form-control" id="select_loc">
-                            <option>Seleccione una localidad...</option>
-                            <option>25 de Mayo</option>
-                            <option>Balcarce</option>
-                            <option>4</option>
-                            <option>5</option>
+                          <select class="form-control" id="select_loc" name="localidad" required>
+                            <option value="">Seleccione localidad...</option>
+                            <?php 
+                            //Ciclo donde se trae todas las localidades (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                             foreach($enlace->query($query_localidades) AS $opciones): ?>
+                            <option value="<?php echo $opciones ['id_localidad'] ?>"> <?php echo $opciones ['localidad'] ?></option>
+                            <?php endforeach ?>   
                           </select>
                           </div>
               </div>
               <div class="form-row">
                   <div class="form-group date form_datetime col-md-4">
                       <label class="control-label" for="datetimepicker-default">Fecha</label>
-                    <input type='text' class="form-control" id='datetimepicker1' placeholder="Ingresar fecha" />
+                    <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha..." required />
                     </div>
                 <div class="form-group date form_datetime col-md-4">
                   <label class="control-label" for="datetimepicker-default">Hora inicio</label>
-	              <input type='text' class="form-control" id='datetimepicker2' placeholder="Ingresar hora de inicio" />
+	              <input type='text' class="form-control" id='datetimepicker2' name="hora1" placeholder="Ingresar hora de inicio..." required />
                 </div>
                 <div class="form-group date form_datetime col-md-4">
                   <label class="control-label" for="datetimepicker-default">Hora fin</label>
-	              <input type='text' class="form-control" id='datetimepicker3' placeholder="Ingresar hora de fin" />
+	              <input type='text' class="form-control" id='datetimepicker3' name="hora2" placeholder="Ingresar hora de fin..." required />
                 </div>
               </div>
                 <div class="form-row">
                 <div class="form-group col-md-4">
-                  <label for="docentes">Seleccionar Docentes</label>
-                    <select multiple class="form-control" id="selectdoc">
-                      <option>Docente 1</option>
-                      <option>Docente 2</option>
-                      <option>Docente 3</option>
-                      <option>Docente 4</option>
-                      <option>Docente 5</option>
+                  <label for="docentes">Docentes</label>
+                    <select multiple class="form-control" id="selectdoc" name="docentes">
+                      <option value="">Seleccionar docentes...</option>
+                      <?php 
+                            //Ciclo donde se trae todas las localidades (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                             foreach($enlace->query($query_usuarios) AS $opciones): ?>
+                            <option value="<?php echo $opciones ['id_usuario'] ?>"> <?php echo $opciones ['nombre'] ?></option>
+                            <?php endforeach ?>   
                     </select>
                     <a><p>Para seleccionar multiples docentes debe conbinar (click+ctrl)</p></a>
                 </div>
                   <div class="form-group col-md-4">
                     <label for="inputTitulo">Cantidad de asistentes</label>
-                    <input type="number" class="form-control" placeholder="ingrese cantidad">
+                    <input type="number" class="form-control" name="asistentes" placeholder="ingrese cantidad..." required>
                   </div> 
                   <div class="form-group col-md-4">
                     <label>Cantidad de empresas</label>
-                    <input type="number" class="form-control" placeholder="ingrese cantidad">
+                    <input type="number" class="form-control" name="empresas" placeholder="ingrese cantidad..." required>
                   </div>
               </div>              
               <div class="form-group">
                 <label for="inputobser">Observaciones</label>
-                <textarea class="form-control" id="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>
+                <textarea class="form-control" id="observaciones" name="observaciones" rows="3" placeholder="Ingresar observaciones..." required></textarea>
               </div>
               <div class="form-group">
               </div>
