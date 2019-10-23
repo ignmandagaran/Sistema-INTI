@@ -1,5 +1,4 @@
 <?php 
-<?php
 session_start();
 include 'vendor/php/querys.php';
 include 'vendor/php/conexion.php';
@@ -10,7 +9,7 @@ include 'vendor/php/conexion.php';
 <html lang="en">
 
 <!-- Header include-->
-<?php $title = "Nueva Capacitacion"; 
+<?php $title = "Nueva Capacitación"; 
       include 'vendor/php/includes/header.php' ?>
 
   <body id="page-top">

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>INTI Red TG - Nueva Asistencia</title>
+  
+  <link rel="shortcut icon" type="image/x-icon" href="imagenes/logoICO.ico" />
+  
+  <!-- Needed to DateTimeTimer-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/flatly/bootstrap.min.css">
+  <link href="vendor/datatimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="index.html">Sistema Red TG 2.0</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navbar Search -->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+      <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-bell fa-fw"></i>
+          <span class="badge badge-danger">9+</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-envelope fa-fw"></i>
+          <span class="badge badge-danger">7</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle fa-fw"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" href="#">Activity Log</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+        </div>
+      </li>
+    </ul>
+
+  </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+   <ul class="sidebar navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="principal.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Tablero principal</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-id-badge"></i>
+          <span>Clientes</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="new_cliente.html"><i class="fas fa-plus-circle"></i>&nbsp;Nuevo cliente</a>
+          <a class="dropdown-item" href="buscar_clientes.html"><i class="fas fa-search"></i>&nbsp;Buscar clientes</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-hands-helping"></i>
+          <span>Asistencias Técnicas</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="new_asistencia.html"><i class="fas fa-plus-circle"></i>&nbsp;Nueva asistencia</a>
+          <a class="dropdown-item" href="buscar_asistencia.html"><i class="fas fa-search"></i>&nbsp;Buscar asistencias</a>
+          <a class="dropdown-item" href="finalizar_asistencia.html"><i class="fas fa-check"></i></i>&nbsp;Finalizar asistencia</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-project-diagram"></i>
+          <span>Proyectos</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="new_proyecto.html"><i class="fas fa-plus-circle"></i>&nbsp;Nuevo Proyecto</a>
+          <a class="dropdown-item" href="buscar_proyecto.html"><i class="fas fa-search"></i>&nbsp;Buscar Proyecto</a>
+          <a class="dropdown-item" href="finalizar_proyecto.html"><i class="fas fa-check"></i></i>&nbsp;Finalizar Proyecto</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-eye"></i>
+          <span>Visitas</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="new_visita.html"><i class="fas fa-plus-circle"></i>&nbsp;Nueva visita</a>
+          <a class="dropdown-item" href="buscar_visita.html"><i class="fas fa-search"></i>&nbsp;Buscar visita</a>
+        </div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-bars"></i>
+            <span>Modulos de Capacacitacion</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="new_modulo.html"><i class="fas fa-plus-circle"></i>&nbsp;Nuevo modulo</a>
+            <a class="dropdown-item" href="buscar_modulo.html"><i class="fas fa-search"></i>&nbsp;Buscar modulo</a>
+          </div>
+        </li>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-chalkboard-teacher"></i>
+          <span>Capacitaciones</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="new_capacitacion.html"><i class="fas fa-plus-circle"></i>&nbsp;Nueva capacitación</a>
+          <a class="dropdown-item" href="buscar_capacitacion.html"><i class="fas fa-search"></i>&nbsp;Buscar capacitación</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-lightbulb"></i>
+          <span>I+D</span></a>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="new_indes.html"><i class="fas fa-plus-circle"></i>&nbsp;Nueva Producción</a>
+          <a class="dropdown-item" href="buscar_indes.html"><i class="fas fa-search"></i>&nbsp;Buscar Producción</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Estadisticas</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tables.html">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tablas</span></a>
+      </li>
+    </ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Panel de control</a>
+          </li>
+          <li class="breadcrumb-item active">Nuevas Asistencias</li>
+        </ol>
+
+        <!-- Area Chart Example-->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-fw fa-plus-circle"></i>
+            Agregar nueva asistencia</div>
+          <div class="card-body">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-1 col-3">
+                  <label for="inputCuit">CUIT</label>
+                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99" maxlength="2">
+                </div>
+                <div class="form-group col-md-2 col-6">
+                  <label for="inputCuit" >&nbsp;</label>
+                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99999999">
+                </div>
+                <div class="form-group col-md-1 col-3">
+                  <label for="inputCuit">&nbsp;</label>
+                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="9">
+                </div>
+                <div class="form-group col-md-2 col-sm-12">
+                  <label for="inputTipo">Tipo</label>
+                  <input type="text" class="form-control" id="inputCliente" placeholder="Ingresar tipo...">
+                </div>
+                <div class="form-group col-md-3 col-sm-12">
+                  <label for="inputIdproyecto">ID_Proyecto</label>
+                  <input type="text" class="form-control" id="inputCliente" placeholder="Ingresar si esta vinculado a un proyecto...">
+                </div>
+                <div class="form-group date form_datetime col-md-3">
+                  <label class="control-label" for="datetimepicker-default">Fecha</label>
+	              <input type='text' class="form-control" id='datetimepicker1' placeholder="Ingresar fecha..." />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress2">Observaciones</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ingresar observaciones"></textarea>
+              </div>
+              <div class="form-group">
+              </div>
+              <a href="buscar_asistencia.html"><p>Puede ver las asistencias AQUI</p></a>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Popper JS -->
+  <script src="vendor/datatimepicker/popper.min.js"></script>
+
+  <!-- Datepicker moment with locales -->
+  <script src="vendor/datatimepicker/moment.min.js" type="text/javascript"></script>
+
+  <script src="vendor/datatimepicker/bootstrap-datetimepicker.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <script src="vendor/chart.js/Chart.min.js"></script>-->
+
+  <!-- Custom scripts for all pages-->
+     <script src="js/sb-admin.min.js"></script>
+
+  <!-- Demo scripts for this page-->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-bar-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+  
+  <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    timeZone:'UTC -3',
+                    format:'DD/MM/YYYY HH:mm',
+                    icons: {time:'far fa-clock'}
+                    
+                });
+            });
+      
+      //format: 'DD/MM/YYYY'
+        </script>
+
+</body>
+
+</html>
