@@ -14,6 +14,15 @@ include 'vendor/php/filtros_capacitaciones.php';
 
 <body id="page-top">
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
   <!-- Navbar include -->
   <?php include 'vendor/php/includes/navbar.php' ?>
 

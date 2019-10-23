@@ -1,9 +1,8 @@
-<?php 
 <?php
+
 session_start();
 include 'vendor/php/querys.php';
 include 'vendor/php/conexion.php';
-    
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +13,14 @@ include 'vendor/php/conexion.php';
       include 'vendor/php/includes/header.php' ?>
 
   <body id="page-top">
+  <body id="page-top">
 
     <!-- Navbar include -->
     <?php include 'vendor/php/includes/navbar.php' ?>
+    <!-- Navbar include -->
+    <?php include 'vendor/php/includes/navbar.php' ?>
 
+    <div id="wrapper">
     <div id="wrapper">
 
     <!-- Sidebar include-->
@@ -33,8 +36,10 @@ include 'vendor/php/conexion.php';
             <a href="#">Panel de control</a>
           </li>
           <li class="breadcrumb-item active">Nueva Capacitación</li>
+          <li class="breadcrumb-item active">Nueva Capacitación</li>
         </ol>
        
+
         <!-- Area Chart Example-->
         <div class="card mb-3">
           <div class="card-header">
@@ -81,6 +86,9 @@ include 'vendor/php/conexion.php';
                   <label for="inputAddress2">Observaciones</label>
                   <textarea class="form-control" id="exampleFormControlTextarea1"  name="observaciones" rows="3" placeholder="Ingresar observaciones" required></textarea>
                 </div>
+                  <label for="inputAddress2">Observaciones</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1"  name="observaciones" rows="3" placeholder="Ingresar observaciones" required></textarea>
+                </div>
               </div>
               <a href="buscar_capacitacion.php"><p>Puede ver las capacitaciones AQUI</p></a>
               <button type="submit" class="btn btn-primary">Guardar</button>
@@ -91,8 +99,8 @@ include 'vendor/php/conexion.php';
       </div>
       <!-- /.container-fluid -->
 
-      <!-- Sticky Footer -->
-      <footer class="sticky-footer">
+      <!-- Footer include -->            
+        <?php include 'vendor/php/includes/footer.php' ?>
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright © Your Website 2019</span>
