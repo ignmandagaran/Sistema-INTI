@@ -86,11 +86,6 @@ body {
   clear: both;
 }
 
-
-
-
-
-
 hr {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -10934,6 +10929,20 @@ body.sidebar-toggled footer.sticky-footer {
   body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
+}
+
+/* EDITING CSS OF ORIGIN */
+.container_logos{
+  width: 400px;
+  margin: auto;
+  margin-top: 30px;
+  padding-right: 15px;
+  margin-right: auto;
+  padding-left: 15px;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Google Material icons */
