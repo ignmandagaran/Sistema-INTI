@@ -7,15 +7,15 @@ viewBox="0 0 1484.04 644.66"
  <defs>
   <style type="text/css">
    <![CDATA[
-    .fil1 {fill:#00358E}
-    .fil0 {fill:#00B5E2}
-    .fil2 {fill:#00358E;fill-rule:nonzero}
+    .fil1 {fill:#FEFEFE}
+    .fil0 {fill:#BDBFC1}
+    .fil2 {fill:#FEFEFE;fill-rule:nonzero}
    ]]>
   </style>
  </defs>
  <g id="Capa_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_2508249916880">
+  <g id="_1889617994800">
    <path class="fil0" d="M322.32 0c178.02,0 322.33,144.31 322.33,322.33 0,178.01 -144.31,322.33 -322.33,322.33 -178.01,0 -322.32,-144.31 -322.32,-322.33 0,-178.02 144.31,-322.33 322.32,-322.33zm-135.33 187l270.65 0 0 270.66 -270.65 0 0 -270.66z"/>
    <path class="fil1" d="M49.21 49.21l546.24 0 0 546.23 -546.24 0 0 -546.23zm137.79 137.79l270.65 0 0 270.66 -270.65 0 0 -270.66z"/>
    <polygon class="fil2" points="728.17,189.3 812.14,189.3 812.14,460.12 728.17,460.12 "/>
