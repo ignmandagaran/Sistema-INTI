@@ -2,9 +2,9 @@
 
     <a class="navbar-brand mr-1" href="index.php"><img src="imagenes/logointi2.svg" alt="logointi"></a>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <!--<button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
-    </button>
+    </button>-->
 
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">

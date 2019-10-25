@@ -18,7 +18,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-hands-helping"></i>
-          <span>Asistencias Técnicas</span>
+          <span>Asistencias</span>
+          <span>Técnicas</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="new_asistencia.php"><i class="fas fa-plus-circle"></i>&nbsp;Nueva asistencia</a>
