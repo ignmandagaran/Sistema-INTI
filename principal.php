@@ -56,7 +56,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 </div>
                 <div class="mr-5">VISITAS</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_visita.html">
+              <a class="card-footer text-white clearfix small z-1" href="buscar_visita.php">
                 <span class="float-left">Mostrar Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -72,7 +72,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 </div>
                 <div class="mr-5">INVESTIGACION Y DESARROLLO</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_indes.html">
+              <a class="card-footer text-white clearfix small z-1" href="buscar_indes.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -88,7 +88,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 </div>
                 <div class="mr-5">ASISTENCIAS</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_asistencia.html">
+              <a class="card-footer text-white clearfix small z-1" href="buscar_asistencia.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -106,7 +106,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 </div>
                 <div class="mr-5">PROYECTOS</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_proyecto.html">
+              <a class="card-footer text-white clearfix small z-1" href="buscar_proyecto.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -123,7 +123,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 </div>
                 <div class="mr-5">CLIENTES</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_cliente.html">
+              <a class="card-footer text-white clearfix small z-1" href="buscar_cliente.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -140,7 +140,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 </div>
                 <div class="mr-5">CAPACITACIONES</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_capacitacion.html">
+              <a class="card-footer text-white clearfix small z-1" href="buscar_capacitacion.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
