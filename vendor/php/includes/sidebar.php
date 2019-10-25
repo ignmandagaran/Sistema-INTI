@@ -1,4 +1,4 @@
-<ul class="sidebar navbar-nav">
+<ul class="sidebar navbar-nav toggled">
       <li class="nav-item active">
         <a class="nav-link" href="principal.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
