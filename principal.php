@@ -641,7 +641,4 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
     <?php include 'vendor/php/includes/scripts.php'?>                  
     
   </body>
-
-</body>
-
-    </html>
+</html>

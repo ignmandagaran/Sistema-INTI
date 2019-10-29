@@ -120,38 +120,36 @@ include 'vendor/php/conexion.php';
 
     <!-- Scripts include-->
     <?php include 'vendor/php/includes/scripts.php'?>                  
-    
-  </body>
   
-  <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker({
-                    timeZone:'UTC -3',
-                    format:'DD/MM/YYYY HH:mm',
-                    icons: {time:'far fa-clock'}
-                    
-                });
-            });
-            $(function () {
-                $('#datetimepicker2').datetimepicker({
-                    timeZone:'UTC -3',
-                    format:'HH:mm',
-                    icons: {time:'far fa-clock'}
-                    
-                });
-            });
-            $(function () {
-                $('#datetimepicker3').datetimepicker({
-                    timeZone:'UTC -3',
-                    format:'HH:mm',
-                    icons: {time:'far fa-clock'}
-                    
-                });
-            });
-      
-      //format: 'DD/MM/YYYY'
-        </script>
+    <script type="text/javascript">
+              $(function () {
+                  $('#datetimepicker1').datetimepicker({
+                      timeZone:'UTC -3',
+                      format:'DD/MM/YYYY HH:mm',
+                      icons: {time:'far fa-clock'}
+                      
+                  });
+              });
+              $(function () {
+                  $('#datetimepicker2').datetimepicker({
+                      timeZone:'UTC -3',
+                      format:'HH:mm',
+                      icons: {time:'far fa-clock'}
+                      
+                  });
+              });
+              $(function () {
+                  $('#datetimepicker3').datetimepicker({
+                      timeZone:'UTC -3',
+                      format:'HH:mm',
+                      icons: {time:'far fa-clock'}
+                      
+                  });
+              });
+        
+        //format: 'DD/MM/YYYY'
+          </script>
 
-</body>
+  </body>
 
 </html>
