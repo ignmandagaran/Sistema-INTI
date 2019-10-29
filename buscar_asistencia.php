@@ -43,8 +43,7 @@ include 'vendor/php/conexion.php';
               <div class="form-row">
                 <div class="form-group col-md-1 col-3">
                   <label for="inputCuit">CUIT</label>
-                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99"
-                    maxlength="2">
+                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99" maxlength="2">
                 </div>
                 <div class="form-group col-md-2 col-6">
                   <label for="inputCuit">&nbsp;</label>
@@ -60,17 +59,14 @@ include 'vendor/php/conexion.php';
                 </div>
                 <div class="form-group col-md-3 col-sm-12">
                   <label for="inputIdproyecto">ID_Proyecto</label>
-                  <input type="text" class="form-control" id="inputCliente"
-                    placeholder="Ingresar si esta vinculado a un proyecto...">
+                  <input type="text" class="form-control" id="inputCliente" placeholder="Ingresar si esta vinculado a un proyecto...">
                 </div>
                 <div class="form-group date form_datetime col-md-3">
                   <label class="control-label" for="datetimepicker-default">Fecha</label>
                   <input type='text' class="form-control" id='datetimepicker1' placeholder="Ingresar fecha..." />
                 </div>
               </div>
-              <a href="finalizar_asistencia.html">
-                <p>Puede finalizar asistencias AQUI</p>
-              </a>
+              <a href="finalizar_asistencia.html"><p>Puede finalizar asistencias AQUI</p></a>
               <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
           </div>

@@ -9,19 +9,10 @@ include 'vendor/php/filtros_capacitaciones.php';
 <html lang="en">
 
 <!-- Header include-->
-<?php $title = "buscar capacitación"; 
+<?php $title = "Buscar Capacitación"; 
       include 'vendor/php/includes/header.php' ?>
 
 <body id="page-top">
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-<script type="text/javascript">
-$(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();
-});
-</script>
 
   <!-- Navbar include -->
   <?php include 'vendor/php/includes/navbar.php' ?>
@@ -52,9 +43,9 @@ $(document).ready(function(){
             <form action="vendor/php/filtros_capacitaciones.php" method="POST">
               <div class="form-row">
                 <div class="form-group col-md-4 col-sm-4">
-                      <label for="tema">Título Capacitación</label>
+                      <label for="tema">Capacitación</label>
                       <select class="form-control" id="select_id" name="titulo">
-                      <option value=''>Seleccione título...</option>
+                      <option value=''>Seleccionar título</option>
                         <?php 
                         //Ciclo donde se trae todos los títulos de capacitación (visibles) de la base de datos. variable $enlace heredada de conexion.php
                        foreach($enlace->query($query_titulo_capacitaciones) AS $opciones): ?>
@@ -65,7 +56,7 @@ $(document).ready(function(){
                 <div class="form-group col-md-4">
                   <label for="selectTipo">Tipo</label>
                   <select class="form-control" name="tipo" id="selectTipo">
-                    <option value="" > Seleccionar tipo </option>
+                    <option value="">Seleccionar tipo</option>
                       <?php 
                          //Ciclo donde se trae todos los tipos de capacitacion (visibles) de la base de datos. variable $enlace heredada de conexion.php
                          foreach($enlace->query($query_tipo_capacitacion) AS $opciones): ?>
@@ -74,9 +65,9 @@ $(document).ready(function(){
                   </select>
                  </div>
                  <div class="form-group col-md-4">
-                    <label for="sel1">Selecciona proyecto:</label>
+                    <label for="sel1">Proyecto</label>
                     <select class="form-control" name="proyecto" id="sel1">
-                    <option value="" > Seleccionar proyecto </option>
+                    <option value="" > Seleccionar proyecto</option>
                       <?php 
                         //Ciclo donde se trae todos los proyectos (visibles) de la base de datos. variable $enlace heredada de conexion.php
                        foreach($enlace->query($query_proyectos) AS $opciones): ?>
@@ -127,7 +118,6 @@ $(document).ready(function(){
                 </tfoot>
                 <tbody>
                   <tr>
-                  
                     <?php 
                     echo "$query_buscar_capacitaciones<BR>";
                     $result = mysqli_query($enlace,$query_buscar_capacitaciones) or die($enlace->error);
@@ -140,7 +130,7 @@ $(document).ready(function(){
                           <td><?php echo $row['titulo_proyecto'];?></td>
                           <td><?php echo $row['fecha_inicio'];?></td>
                           <td><?php echo $row['fecha_fin'];?></td>
-                          <td><?php// echo $row[''];?></td>
+                          <td><?php // echo $row[''];?></td>
                           <td><?php //echo $row[''];?></td>
                           <td><?php echo $row["observaciones"]; ?></td>
                           <td><a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
