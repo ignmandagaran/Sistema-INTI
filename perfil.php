@@ -31,21 +31,21 @@ include 'vendor/php/conexion.php';
           <li class="breadcrumb-item">
             <a href="#">Usuarios</a>
           </li>
-          <li class="breadcrumb-item active">Matriz de control</li>
+          <li class="breadcrumb-item active">Perfil</li>
         </ol>
 
         <!-- Page Content -->
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-fw fa-plus-circle"></i>
-            Elegir usuario y definir privilegios</div>
+            Tu perfil de usuario</div>
           <div class="card-body">
                     <div class="container emp-profile">
                         <form method="post">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="profile-img">
-                                        <img src="imagenes/perfil_img.png" alt=""/>
+                                        <img src="imagenes/perfil_img.png" alt="Foto del perfil"/>
                                         <div class="file btn btn-lg btn-primary">
                                             Cambiar foto
                                             <input type="file" name="file"/>

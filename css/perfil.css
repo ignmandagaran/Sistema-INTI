@@ -27,6 +27,8 @@
     opacity: 0;
     right: 0;
     top: 0;
+    cursor: pointer;
+    margin: 5px 0 5px 0;
 }
 .profile-head h5{
     color: #333;
