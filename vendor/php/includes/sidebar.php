@@ -70,6 +70,7 @@
           <a class="dropdown-item" href="buscar_indes.php"><i class="fas fa-search"></i>&nbsp;Buscar Producción</a>
         </div>
       </li>
+      <!--
       <li class="nav-item">
         <a class="nav-link" href="charts.php">
           <i class="fas fa-fw fa-chart-area"></i>
@@ -79,5 +80,5 @@
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Tablas</span></a>
-      </li>
+      </li>-->
     </ul>

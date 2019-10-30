@@ -54,9 +54,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-eye"></i>
                 </div>
-                <div class="mr-5">VISITAS</div>
+                <div class="mr-5">CLIENTES</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_visita.php">
+              <a class="card-footer text-white clearfix small z-1" href="new_cliente.php">
                 <span class="float-left">Mostrar Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -70,9 +70,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-lightbulb"></i>
                 </div>
-                <div class="mr-5">INVESTIGACION Y DESARROLLO</div>
+                <div class="mr-5">ASISTENCIAS TECNICAS</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_indes.php">
+              <a class="card-footer text-white clearfix small z-1" href="new_asistencia.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -86,9 +86,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-hands-helping"></i>
                 </div>
-                <div class="mr-5">ASISTENCIAS</div>
+                <div class="mr-5">PROYECTOS</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_asistencia.php">
+              <a class="card-footer text-white clearfix small z-1" href="new_proyecto.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -104,9 +104,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-project-diagram"></i>
                 </div>
-                <div class="mr-5">PROYECTOS</div>
+                <div class="mr-5">VISITAS</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_proyecto.php">
+              <a class="card-footer text-white clearfix small z-1" href="new_visita.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -121,9 +121,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-user-circle"></i>
                 </div>
-                <div class="mr-5">CLIENTES</div>
+                <div class="mr-5">CAPACITACIONES</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_cliente.php">
+              <a class="card-footer text-white clearfix small z-1" href="new_capacitacion.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -138,9 +138,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-chalkboard-teacher"></i>
                 </div>
-                <div class="mr-5">CAPACITACIONES</div>
+                <div class="mr-5">INVESTIGACION Y DESARROLLO</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="buscar_capacitacion.php">
+              <a class="card-footer text-white clearfix small z-1" href="new_indes.php">
                 <span class="float-left">Ver Detalles</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
