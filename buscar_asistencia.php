@@ -59,6 +59,8 @@ include 'vendor/php/conexion.php';
                 </div>
                 <div class="form-group col-md-3 col-sm-12">
                   <label for="inputIdproyecto">ID_Proyecto</label>
+                  <input type="text" class="form-control" id="inputCliente"
+                    placeholder="Ingresar si esta vinculado a un proyecto...">
                   <input type="text" class="form-control" id="inputCliente" placeholder="Ingresar si esta vinculado a un proyecto...">
                 </div>
                 <div class="form-group date form_datetime col-md-3">

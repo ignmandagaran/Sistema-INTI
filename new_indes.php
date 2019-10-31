@@ -76,8 +76,8 @@ include 'vendor/php/conexion.php';
                 <!--<<div class="form-group date form_datetime col-md-3">
                   <label class="control-label" for="datetimepicker-default">Hora inicio</label>
 	              <input type='text' class="form-control" id='datetimepicker2' placeholder="Ingresar hora de inicio" />
-                </div>-->
-                <!--<div class="form-group date form_datetime col-md-3">
+                </div>
+                <div class="form-group date form_datetime col-md-3">
                   <label class="control-label" for="datetimepicker-default">Hora fin</label>
 	              <input type='text' class="form-control" id='datetimepicker3' placeholder="Ingresar hora de fin" />
                 </div>-->
