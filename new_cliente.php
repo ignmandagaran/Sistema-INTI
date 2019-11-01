@@ -39,23 +39,23 @@ include 'vendor/php/conexion.php';
               <i class="fas fa-fw fa-plus-circle"></i>
               Agregar nuevo cliente</div>
             <div class="card-body">
-              <form>
+              <form action="vendor/php/add_clientes.php" method="POST">
                 <div class="form-row">
                   <div class="form-group col-md-1 col-sm-3">
                     <label for="inputCuit">CUIT</label>
-                    <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99" maxlength="2">
+                    <input type="number" class="form-control" id="inputEmail4" placeholder="" name="cuit1" min="1" max="99" minlength="2" maxlength="2" required>
                   </div>
                   <div class="form-group col-md-4 col-sm-6">
                     <label for="inputCuit" >&nbsp;</label>
-                    <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99999999">
+                    <input type="number" class="form-control" id="inputEmail4" placeholder="" name="cuit2" min="1" max="99999999" minlength="8" maxlength="8" required>
                   </div>
                   <div class="form-group col-md-1 col-sm-3">
                     <label for="inputCuit">&nbsp;</label>
-                    <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="9">
+                    <input type="number" class="form-control" id="inputEmail4" placeholder="" name="cuit3" min="1" max="9" minlength="1" maxlength="1" required>
                   </div>
                   <div class="form-group col-md-6 col-sm-12">
                     <label for="inputPassword4">Nombre del cliente</label>
-                    <input type="text" class="form-control" id="inputCliente" placeholder="Ingresar nombre del cliente">
+                    <input type="text" class="form-control" id="inputCliente" name="nombre" placeholder="Ingresar nombre del cliente" required>
                   </div>
                 </div>
                 <div class="form-row">
@@ -64,7 +64,7 @@ include 'vendor/php/conexion.php';
 
                   <div class="form-group col-sm-4">
                     <label for="inputAddress">Provincia</label>
-                    <select class="form-control" id="provincia-select">
+                    <select class="form-control" id="provincia-select" required>
                       <option disabled selected>Seleccione la provincia...</option>
                       <?php 
 
@@ -78,7 +78,7 @@ include 'vendor/php/conexion.php';
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="inputAddress">Localidad</label>
-                    <select class="form-control" id="localidad-select">
+                    <select class="form-control" id="localidad-select" name="localidad" required>
                     </select>
                   </div>
 
@@ -86,7 +86,7 @@ include 'vendor/php/conexion.php';
 
                   <div class="form-group col-sm-4">
                     <label for="exampleFormControlSelect2">Rubro</label>
-                    <select class="form-control" id="">
+                    <select class="form-control" id="" name="rubro">
                       <option>1</option>
                     </select>
                   </div>
@@ -94,10 +94,9 @@ include 'vendor/php/conexion.php';
                 <div class="form-row">
                     <div class="form-group col-sm-12">
                         <label for="exampleFormControlTextarea1">Describir actividad principal:</label>
-                        <textarea class="form-control" id="" rows="3" maxlength="200"></textarea>
+                        <textarea class="form-control" id="" rows="3" maxlength="200" name="descripcion"></textarea>
                     </div>
                 </div>
-                <a href="buscar_cliente.html"><p>Puede ver los clientes AQUI</p></a>
                 <div class="form-group">
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>

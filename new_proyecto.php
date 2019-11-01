@@ -8,7 +8,7 @@ include 'vendor/php/conexion.php';
 <html lang="en">
 
 <!-- Header include-->
-<?php $title = "Nuevo Cliente"; 
+<?php $title = "Nuevo Proyecto"; 
       include 'vendor/php/includes/header.php' ?>
 
 <body id="page-top">
@@ -39,20 +39,31 @@ include 'vendor/php/conexion.php';
             <i class="fas fa-fw fa-plus-circle"></i>
             Agregar nuevo proyecto</div>
           <div class="card-body">
-            <form>
+            <form action="vendor/php/add_proyecto.php" method="POST">
               <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                   <label for="inputIdproyecto">Titulo</label>
-                  <input type="text" class="form-control" id="inputCliente" placeholder="Ingresar titulo del proyecto">
+                  <input type="text" class="form-control" id="inputCliente" name="titulo" placeholder="Ingresar título.." required>
                 </div>
-                <div class="form-group date form_datetime col-md-6">
+                <div class="form-group col-md-4">
+                  <label for="inputIdproyecto">Titulo</label>
+                  <select class="form-control" id="selecttipo" name="tipo" required>
+                  <option value="" > Seleccionar tipo..</option>
+                      <?php 
+                         //Ciclo donde se trae todos los tipos de proyecto (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                         foreach($enlace->query($query_tipo_proyectos) AS $opciones): ?>
+                           <option value="<?php echo $opciones ['id_tipo_proyecto'] ?>"> <?php echo $opciones ['tipo_proyecto'] ?></option>
+                      <?php endforeach ?>
+                  </select>
+                </div>
+                <div class="form-group date form_datetime col-md-4">
                   <label class="control-label" for="datetimepicker-default">Fecha de inicio</label>
-	              <input type='text' class="form-control" id='datetimepicker_nuevoProyecto' placeholder="Ingresar fecha de inicio del proyecto" />
+	              <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha.."  required/>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputAddress2">Observaciones</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ingresar observaciones"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>
               </div>
               <div class="form-group">
               </div>

@@ -8,7 +8,7 @@ include 'vendor/php/conexion.php';
 <html lang="en">
 
 <!-- Header include-->
-<?php $title = "Nuevo Cliente"; 
+<?php $title = "Nuevo I+D"; 
       include 'vendor/php/includes/header.php' ?>
 
 <body id="page-top">
@@ -39,68 +39,64 @@ include 'vendor/php/conexion.php';
             <i class="fas fa-fw fa-plus-circle"></i>
             Agregar nueva Producción de I+D</div>
           <div class="card-body">
-            <form>
+            
+          <form action="vendor/php/add_indes.php" method="POST">
               <div class="form-row">
-                <div class="form-group col-md-7 col-3">
+              <div class="form-group col-md-6 col-sm-6">
+                  <label for="inputTipo">Titulo de Produccion</label>
+                  <input type="text" class="form-control" id="inputCliente" name="titulo" placeholder="Ingresar titulo.." required>
+                </div>
+              <div class="form-group col-md-6 col-6">
                         <label for="tema">Seleccionar tipo</label>
-                        <select class="form-control" id="selectema">
+                        <select class="form-control" id="selectema" name="tipo" required>
                           <option>Selecione un tipo...</option>
-                          <option>Programación y control de Producción</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
+                              <?php
+                                 foreach($enlace->query($query_tipo_indes) as $opciones): ?>
+                         <OPTION value="<?php echo $opciones['id_tipo_indes'] ?>"><?php echo $opciones['tipo'] ?></OPTION>
+                              <?php endforeach ?> 
                         </select>
                 </div>
-                <div class="form-group date form_datetime col-md-5">
-                    <label class="control-label" for="datetimepicker-default">Fecha</label>
-                    <input type='text' class="form-control" id='datetimepicker1' placeholder="Ingresar fecha" />
                 </div>
-            </div>
                 <div class="form-row">
-                <div class="form-group col-md-7 col-sm-12">
-                  <label for="inputTipo">Titulo de Produccion</label>
-                  <input type="text" class="form-control" id="inputCliente" placeholder="Ingresar titulo para la produccion...">
+                <div class="form-group date form_datetime col-md-6 col-sm-6">
+                    <label class="control-label" for="datetimepicker-default">Fecha</label>
+                    <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha.."required />
                 </div>
-                <div class="form-group col-md-5 col-sm-12">
-                  <label for="tema">Seleccionar tema</label>
-                  <select class="form-control" id="selectema">
-                    <option>Selecione un tema...</option>
-                    <option>Programación y control de Producción</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
+                <div class="form-group col-md-6 col-sm-6">
+                <label for="tema">Tema</label>
+                      <select class="form-control" id="select_id" name="tema" required>
+                      <option value=''>Seleccionar tema..</option>
+                        <?php 
+                        //Ciclo donde se trae todos los temas (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                       foreach($enlace->query($query_temas) AS $opciones): ?>
+                       <option value="<?php echo $opciones ['id_tema'] ?>"> <?php echo $opciones ['tema'] ?></option>
+                       <?php endforeach ?>  
+                      </select>
                   </div>
               </div>
               <div class="form-row">
-                <!--<<div class="form-group date form_datetime col-md-3">
-                  <label class="control-label" for="datetimepicker-default">Hora inicio</label>
-	              <input type='text' class="form-control" id='datetimepicker2' placeholder="Ingresar hora de inicio" />
-                </div>
-                <div class="form-group date form_datetime col-md-3">
-                  <label class="control-label" for="datetimepicker-default">Hora fin</label>
-	              <input type='text' class="form-control" id='datetimepicker3' placeholder="Ingresar hora de fin" />
-                </div>-->
                 <div class="form-group col-md-12">
-                  <label for="selectAseso">Seleccionar asesores</label>
-                    <select multiple class="form-control" id="selectAseso">
-                      <option>Asesor 1</option>
-                      <option>Asesor 2</option>
-                      <option>Asesor 3</option>
-                      <option>Asesor 4</option>
-                      <option>Asesor 5</option>
+                  <label for="selectAseso">Asesores</label>
+                    <select multiple class="form-control" id="selectdoc" name="asesor" required>
+                      <option value="">Seleccionar asesores...</option>
+                      <?php 
+                            //Ciclo donde se trae todas los usuarios (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                             foreach($enlace->query($query_usuarios) AS $opciones): ?>
+                            <option value="<?php echo $opciones ['id_usuario'] ?>"> <?php echo $opciones ['usuario'] ?></option>
+                            <?php endforeach ?>   
                     </select>
                     <a><p>Para seleccionar multiples asesores debe conbinar (click+ctrl)</p></a>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputAddress2">Observaciones</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ingresar observaciones"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="observacion" rows="3" placeholder="Ingresar observaciones"></textarea>
               </div>
               <div class="form-group">
               </div>
               <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
+
           </div>
         </div>
 
@@ -123,7 +119,6 @@ include 'vendor/php/conexion.php';
 
     <!-- Logout Modal include-->
     <?php include 'vendor/php/includes/logout.php'?>
-
     <!-- Scripts include-->
     <?php include 'vendor/php/includes/scripts.php'?>
   
@@ -155,7 +150,5 @@ include 'vendor/php/conexion.php';
       
       //format: 'DD/MM/YYYY'
         </script>
-
 </body>
-
 </html>

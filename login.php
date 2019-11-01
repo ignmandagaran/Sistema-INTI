@@ -47,8 +47,8 @@ require 'vendor/php/sesiones.php';
       </div>
     </div>
     <div class="container_logos">
-      <img src="imagenes/logo inti.svg" alt="logo inti"/>
-      <img src="imagenes/logo iset.svg" alt="logo iset"/>
+      <img src="imagenes/logo_inti.svg" alt="logo inti"/>
+      <img src="imagenes/logo_iset.svg" alt="logo iset"/>
 	  </div>
   </div> 
 

@@ -8,10 +8,15 @@ include 'vendor/php/conexion.php';
 <html lang="en">
 
 <!-- Header include-->
-<?php $title = "Nuevo Cliente"; 
+<?php $title = "Buscar Cliente"; 
       include 'vendor/php/includes/header.php' ?>
 
 <body id="page-top">
+
+<!--Fuente Iconos-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
 
   <!-- Navbar include -->
   <?php include 'vendor/php/includes/navbar.php' ?>
@@ -39,34 +44,41 @@ include 'vendor/php/conexion.php';
             <i class="fas fa-fw fa-plus-circle"></i>
             Buscar clientes por:</div>
           <div class="card-body">
-            <form>
+            <form action="" method="POST">
               <div class="form-row">
-                <div class="form-group col-md-1 col-sm-3">
-                  <label for="inputCuit">CUIT</label>
-                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99" maxlength="2">
+              <div class="form-group col-md-4 col-sm-4">
+                      <label for="tema">Cuit</label>
+                      <select class="form-control" id="select_id" name="cuit">
+                      <option value=''>Seleccionar cuit..</option>
+                        <?php 
+                        //Ciclo donde se trae todos los cuit de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                       foreach($enlace->query($query_cuit) AS $opciones): ?>
+                       <option value="<?php echo $opciones ['id_cliente'] ?>"> <?php echo $opciones ['cuit'] ?></option>
+                       <?php endforeach ?>  
+                      </select>
                 </div>
-                <div class="form-group col-md-4 col-sm-6">
-                  <label for="inputCuit" >&nbsp;</label>
-                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99999999">
+                <div class="form-group col-md-4 col-sm-4">
+                      <label for="tema">Nombre</label>
+                      <select class="form-control" id="select_id" name="nombre">
+                      <option value=''>Seleccionar nombre..</option>
+                        <?php 
+                        //Ciclo donde se trae todos los nombres de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                       foreach($enlace->query($query_nombres) AS $opciones): ?>
+                       <option value="<?php echo $opciones ['id_cliente'] ?>"> <?php echo $opciones ['nombre'] ?></option>
+                       <?php endforeach ?>  
+                      </select>
                 </div>
-                <div class="form-group col-md-1 col-sm-3">
-                  <label for="inputCuit">&nbsp;</label>
-                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="9">
-                </div>
-                <div class="form-group col-md-6 col-sm-12">
-                  <label for="inputPassword4">Nombre del cliente</label>
-                  <input type="text" class="form-control" id="inputCliente" placeholder="Ingrese nombre del cliente">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-sm-6">
-                  <label for="inputAddress">Localidad</label>
-                  <input type="text" class="form-control" id="inputCiudad" placeholder="Ingresar o seleccionar localidad">
-                </div>
-                <div class="form-group col-sm-6">
-                  <label for="inputAddress2">Actividad</label>
-                  <input type="text" class="form-control" id="inputActividad" placeholder="Ingresar o seleccionar actividad">
-                </div>
+                <div class="form-group col-md-4 col-sm-4">
+                          <label for="tema">Localidad </label>
+                          <select class="form-control" id="select_loc" name="localidad" required>
+                            <option value="">Seleccione localidad...</option>
+                            <?php 
+                            //Ciclo donde se trae todas las localidades (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                             foreach($enlace->query($query_localidades) AS $opciones): ?>
+                            <option value="<?php echo $opciones ['id_localidad'] ?>"> <?php echo $opciones ['localidad'] ?></option>
+                            <?php endforeach ?>   
+                          </select>
+                          </div>
               </div>
               <a href="new_cliente.html"><p>Puede agregar un cliente AQUI</p></a>
               <button type="submit" class="btn btn-primary">Buscar</button>
@@ -83,107 +95,45 @@ include 'vendor/php/conexion.php';
               <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
+                    <th>#</th>
                     <th>CUIT</th>
                     <th>Nombre</th>
                     <th>Localidad</th>
+                    <th>Rubro</th>
                     <th>Actividad</th>
+                    <th>Modificar</th>
+                    <th>Borrar</th>
                   </tr>
                 </thead>
                 <tfoot>
                   <tr>
+                    <th>#</th>
                     <th>CUIT</th>
                     <th>Nombre</th>
                     <th>Localidad</th>
+                    <th>Rubro</th>
                     <th>Actividad</th>
+                    <th>Modificar</th>
+                    <th>Borrar</th>
                   </tr>
                 </tfoot>
                 <tbody>
-                <!--
-                 <?php
-                 /*   
-                  include 'vendor/php/conexion.php';
-
-                  $sql="SELECT * FROM usuarios";
-                  $result = mysqli_query($conn,$sql); 
-                  
-                  while ($row = $result->fetch_assoc()){
-                  ?>
-                 
-                  <tr>
-                    <td><?php echo $row['id_usuarios']?></td>
-                    <td><?php echo $row['usuario']?></td>
-                    <td><?php echo $row['clave']?></td>
-                    <td><?php echo $row['roles_id_roles']?></td>
-                  </tr>
-                  <?php
-                    }*/
-                    ?>
-                  -->
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-                    <td>61</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Sales Assistant</td>
-                    <td>San Francisco</td>
-                    <td>59</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Software Engineer</td>
-                    <td>Edinburgh</td>
-                    <td>23</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Office Manager</td>
-                    <td>London</td>
-                    <td>30</td>
-                  </tr>
-                  <tr>
-                    <td>30-71031609-7</td>
-                    <td>Support Lead</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
+                <tr>
+                <?php
+                    $result = mysqli_query($enlace,$query_buscar_clientes) or die($enlace->error);
+                    while ($row= $result->fetch_assoc()){ 
+                      ?>
+                       <tr>
+                          <td><?php echo $row['id_cliente'];?></td>
+                          <td><?php echo $row['cuit'];?></td>
+                          <td><?php echo $row['nombre'];?></td>
+                          <td><?php echo $row['localidad'];?></td>
+                          <td><?php echo $row['rubro'];?></td>
+                          <td><?php echo $row['actividad_principal'];?></td>
+                          <td><a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                          <td><a href="vendor/php/borrado_logico.php?cliente= <?php echo $row['id_cliente'];?>" onclick= "return confirmation()" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
+                       </tr>
+                    <?php }?>  
                   </tr>
                 </tbody>
               </table>
@@ -213,6 +163,21 @@ include 'vendor/php/conexion.php';
 
     <!-- Scripts include-->
     <?php include 'vendor/php/includes/scripts.php'?>
+
+    <!--Script Confirmacion-->
+    <script type="text/javascript">
+     function confirmation() 
+     {
+        if(confirm("Desea seguir?"))
+	{
+	   return true;
+	}
+	else
+	{
+	   return false;
+	}
+     }
+    </script>
 
 </body>
 

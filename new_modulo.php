@@ -58,16 +58,17 @@ include 'vendor/php/conexion.php';
                 </div>
               </div>
               <div class="form-row">
-                  <div class="form-group col-md-6 col-sm-4">
+              <div class="form-group col-md-6 col-sm-4">
                       <label for="tema">Tema</label>
-                      <select class="form-control" id="selectTema" name="tema">
-                        <option value="">Seleccione tema...</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                      <select class="form-control" id="select_id" name="tema">
+                      <option value=''>Seleccionar tema..</option>
+                        <?php 
+                        //Ciclo donde se trae todos los temas (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                       foreach($enlace->query($query_temas) AS $opciones): ?>
+                       <option value="<?php echo $opciones ['id_tema'] ?>"> <?php echo $opciones ['tema'] ?></option>
+                       <?php endforeach ?>  
                       </select>
-                      </div>
+                </div>
                       <div class="form-group col-md-6 col-sm-4">
                           <label for="tema">Localidad </label>
                           <select class="form-control" id="select_loc" name="localidad" required>
@@ -97,12 +98,12 @@ include 'vendor/php/conexion.php';
                 <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="docentes">Docentes</label>
-                    <select multiple class="form-control" id="selectdoc" name="docentes">
+                    <select multiple class="form-control" id="selectdoc" name="docente">
                       <option value="">Seleccionar docentes...</option>
                       <?php 
-                            //Ciclo donde se trae todas las localidades (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                            //Ciclo donde se trae todas los usuarios (visibles) de la base de datos. variable $enlace heredada de conexion.php
                              foreach($enlace->query($query_usuarios) AS $opciones): ?>
-                            <option value="<?php echo $opciones ['id_usuario'] ?>"> <?php echo $opciones ['nombre'] ?></option>
+                            <option value="<?php echo $opciones ['id_usuario'] ?>"> <?php echo $opciones ['usuario'] ?></option>
                             <?php endforeach ?>   
                     </select>
                     <a><p>Para seleccionar multiples docentes debe conbinar (click+ctrl)</p></a>

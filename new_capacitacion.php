@@ -12,7 +12,7 @@ include 'vendor/php/conexion.php';
 <?php $title = "Nueva Capacitación"; 
       include 'vendor/php/includes/header.php' ?>
 
-  <body id="page-top">
+  <body id="page-top">  
 
     <!-- Navbar include -->
     <?php include 'vendor/php/includes/navbar.php' ?>
@@ -40,7 +40,7 @@ include 'vendor/php/conexion.php';
             <i class="fas fa-fw fa-plus-circle"></i>
             Agregar nueva capacitación</div>
           <div class="card-body">
-            <form onsubmit="setTimeout('document.forms[0].reset()', 2000)" action="vendor/php/add_capacitacion.php" method="POST"> 
+            <form  action="vendor/php/add_capacitacion.php" method="POST"> 
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputTitulo">Titulo</label>

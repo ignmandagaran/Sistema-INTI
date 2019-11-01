@@ -31,10 +31,10 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 
   <div id="wrapper">
 
-    <!-- Sidebar include
+    <!-- Sidebar include -->
     <?php include 'vendor/php/includes/sidebar.php' ?>
 
-    <div id="content-wrapper">-->
+    <div id="content-wrapper">
 
       <div class="container-fluid">
 
@@ -148,7 +148,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
               </a>
             </div>
           </div>
-</div>
+        </div>
 
         <!-- Area Chart Example
         <div class="card mb-3">
