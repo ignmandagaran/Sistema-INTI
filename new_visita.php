@@ -8,7 +8,7 @@ include 'vendor/php/conexion.php';
 <html lang="en">
 
 <!-- Header include-->
-<?php $title = "Nuevo Cliente"; 
+<?php $title = "Nueva Visita"; 
       include 'vendor/php/includes/header.php' ?>
 
 <body id="page-top">
@@ -39,61 +39,74 @@ include 'vendor/php/conexion.php';
             <i class="fas fa-fw fa-plus-circle"></i>
             Agregar nueva visita</div>
           <div class="card-body">
-            <form>
+            <form action="vendor/php/add_visita.php" method="POST">
               <div class="form-row">
-                <div class="form-group col-md-1 col-3">
-                  <label for="inputCuit">CUIT</label>
-                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99" maxlength="2">
+              <div class="form-group col-md-4 col-sm-4">
+                      <label for="tema">Cuit</label>
+                      <select class="form-control" id="select_id" name="cuit" required>
+                      <option value=''>Seleccionar cuit..</option>
+                        <?php 
+                        //Ciclo donde se trae todos los cuit de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                       foreach($enlace->query($query_cuit) AS $opciones): ?>
+                       <option value="<?php echo $opciones ['id_cliente'] ?>"> <?php echo $opciones ['cuit'] ?></option>
+                       <?php endforeach ?>  
+                      </select>
                 </div>
-                <div class="form-group col-md-2 col-6">
-                  <label for="inputCuit" >&nbsp;</label>
-                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="99999999">
-                </div>
-                <div class="form-group col-md-1 col-3">
-                  <label for="inputCuit">&nbsp;</label>
-                  <input type="number" class="form-control" id="inputEmail4" placeholder="" min="1" max="9">
-                </div>
-                <div class="form-group date form_datetime col-md-2">
+                <div class="form-group date form_datetime col-md-4">
                   <label class="control-label" for="datetimepicker-default">Fecha</label>
-	              <input type='text' class="form-control" id='datetimepicker1' placeholder="Ingresar fecha" />
+	              <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha" required/>
                 </div>
-                <div class="form-group col-md-3 col-sm-12">
-                  <label for="inputTipo">ID Asistencia</label>
-                  <input type="text" class="form-control" id="inputCliente" placeholder="Ingresar si esta vinculado a una asistencia">
+                <div class="form-group col-md- col-sm-4">
+                      <label for="tema">Tipo Visita</label>
+                      <select class="form-control" id="select_id" name="tipo" required>
+                      <option value=''>Seleccionar tipo..</option>
+                        <?php 
+                        //Ciclo donde se trae todos los tipos de visita (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                       foreach($enlace->query($query_tipo_visitas) AS $opciones): ?>
+                       <option value="<?php echo $opciones ['id_tipo_visita'] ?>"> <?php echo $opciones ['tipo_visita'] ?></option>
+                       <?php endforeach ?>  
+                      </select>   
                 </div>
-                <div class="form-group col-md-3 col-sm-12">
-                  <label for="inputIdproyecto">ID Proyecto</label>
-                  <input type="text" class="form-control" id="inputCliente" placeholder="Ingresar si esta vinculado a un proyecto">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group date form_datetime col-md-3">
+                <div class="form-group col-md-4">
+                    <label for="sel1">Selecciona proyecto:</label>
+                    <select class="form-control" name="proyecto" id="sel1" required>
+                    <option value="" > Seleccionar proyecto </option>
+                      <?php 
+                        //Ciclo donde se trae todos los proyectos (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                       foreach($enlace->query($query_proyectos) AS $opciones): ?>
+                       <option value="<?php echo $opciones ['id_proyecto'] ?>"> <?php echo $opciones ['titulo_proyecto'] ?></option>
+                       <?php endforeach ?>                
+                    </select>
+                </div> 
+                <div class="form-group date form_datetime col-md-4">
                   <label class="control-label" for="datetimepicker-default">Hora inicio</label>
-	              <input type='text' class="form-control" id='datetimepicker2' placeholder="Ingresar hora de inicio" />
+	              <input type='text' class="form-control" id='datetimepicker2' name="inicio" placeholder="Ingresar hora de inicio" required/>
                 </div>
-                <div class="form-group date form_datetime col-md-3">
+                <div class="form-group date form_datetime col-md-4">
                   <label class="control-label" for="datetimepicker-default">Hora fin</label>
-	              <input type='text' class="form-control" id='datetimepicker3' placeholder="Ingresar hora de fin" />
+	              <input type='text' class="form-control" id='datetimepicker3' name="fin" placeholder="Ingresar hora de fin" required/>
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="exampleFormControlSelect2">Seleccionar asesores</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2">
-                      <option>Asesor 1</option>
-                      <option>Asesor 2</option>
-                      <option>Asesor 3</option>
-                      <option>Asesor 4</option>
-                      <option>Asesor 5</option>
+                </div>
+                <div class="form-group col-md-12">
+                  <label for="selectAseso">Asesores</label>
+                    <select multiple class="form-control" id="selectdoc" name="asesor" required>
+                      <option value="">Seleccionar asesores...</option>
+                      <?php 
+                            //Ciclo donde se trae todas los usuarios (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                             foreach($enlace->query($query_usuarios) AS $opciones): ?>
+                            <option value="<?php echo $opciones ['id_usuario'] ?>"> <?php echo $opciones ['nombre'] ?></option>
+                            <?php endforeach ?>   
                     </select>
                     <a><p>Para seleccionar multiples asesores debe conbinar (click+ctrl)</p></a>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputAddress2">Observaciones</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ingresar observaciones"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>
               </div>
               <div class="form-group">
-              </div>
               <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
             </form>
           </div>
         </div>

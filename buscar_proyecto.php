@@ -2,6 +2,16 @@
 session_start();
 include 'vendor/php/querys.php';
 include 'vendor/php/conexion.php';
+
+//Comprobamos si el usario está logueado
+//Si no lo está, se le redirecciona al index
+//Si lo está, definimos el botón de cerrar sesión y la duración de la sesión
+if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
+	header('Location: index.php');
+} else {
+	$estado = $_SESSION['usuario'];
+	require('vendor/php/sesiones.php');
+};
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +68,7 @@ include 'vendor/php/conexion.php';
                     </select>
                 </div>
                     <div class="form-group col-md-6">
-                  <label for="inputIdproyecto">Titulo</label>
+                  <label for="inputIdproyecto">Tipo</label>
                   <select class="form-control" id="selecttipo" name="tipo" required>
                   <option value="" > Seleccionar tipo..</option>
                       <?php 
@@ -112,6 +122,7 @@ include 'vendor/php/conexion.php';
                   <?php
                     $result = mysqli_query($enlace,$query_buscar_proyectos) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){ 
+                      $observacionesModal=$row['observaciones'];
                       ?>
                        <tr>
                           <td><?php echo $row['id_proyecto'];?></td>

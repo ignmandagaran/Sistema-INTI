@@ -14,7 +14,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 } else {
 	$estado = $_SESSION['usuario'];
 	require('vendor/php/sesiones.php');
-};
+}
 ?>
 
 <!DOCTYPE html>

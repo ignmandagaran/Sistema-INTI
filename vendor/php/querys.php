@@ -29,8 +29,15 @@ $query_titulo_modulos = "SELECT * FROM modulos WHERE visible=1 ";
 //Query para cargar tipos de proyectos (visibles) en select
 $query_tipo_proyectos = "SELECT * FROM tipo_proyectos WHERE visible=1 ";
 
-//Query para cargar tipos de indes (visibles) en select
-$query_tipo_indes = "SELECT * FROM tipo_indes WHERE visible=1";
+//Query para cargar tipos de visitas (visibles) en select
+$query_tipo_visitas = "SELECT * FROM tipo_visitas WHERE visible=1";
+
+//Query para cargar cuits (visibles) en select
+$query_cuit = "SELECT cuit FROM clientes WHERE visible=1 ";
+
+//Query para cargar clientes (visibles) en select
+$query_cliente = "SELECT nombre FROM clientes WHERE visible=1 ";
+
 
 //Query para cargar modulos (visibles) en select
 $query_buscar_modulos= 'SELECT * FROM modulos m 
@@ -54,6 +61,12 @@ $query_buscar_indes= 'SELECT * FROM indes i
                     INNER JOIN tipo_indes ti ON ti.id_tipo_indes=i.id_tipo_indes
                     INNER JOIN temas t ON t.id_tema=i.id_tema
                     WHERE i.visible=1';
+
+//Query para cargar visitas (visibles) en select
+$query_buscar_visitas= 'SELECT * FROM visitas v 
+                    INNER JOIN tipo_visitas tv ON tv.id_tipo_visita=v.id_tipo_visita
+                    INNER JOIN proyectos p ON p.id_proyecto=v.id_proyecto
+                    WHERE v.visible=1';
 
 
 /*function selectProvincias (){
