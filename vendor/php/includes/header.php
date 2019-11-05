@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><?php echo "INTI Red TG - $title";?></title>
+  <title><?php echo "INTI - $title";?></title>
   
   <link rel="shortcut icon" type="image/x-icon" href="imagenes/logoICO.ico" />
 

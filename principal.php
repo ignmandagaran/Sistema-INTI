@@ -21,7 +21,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 <html lang="es">
 
 <!-- Header include-->
-<?php $title = "Nuevo Cliente"; 
+<?php $title = "Pantalla Principal"; 
       include 'vendor/php/includes/header.php' ?>
 
 <body id="page-top">

@@ -18,7 +18,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 <html lang="en">
 
 <!-- Header include-->
-<?php $title = "Nueva Capacitacion"; 
+<?php $title = "Nuevo Modulo"; 
       include 'vendor/php/includes/header.php' ?>
 
 <body id="page-top">
