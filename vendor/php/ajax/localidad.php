@@ -7,7 +7,7 @@ $query = "SELECT id_localidad , localidad FROM `localidades` WHERE id_provincia=
 $result = mysqli_query($enlace, $query);
 echo "<option disabled selected>Seleccione la localidad...</option>";
 while ($row = mysqli_fetch_assoc($result)){
-	echo "<option value='" . $row[id_localidad] . "'>" . utf8_encode($row[localidad]) ."</option>";
+	echo "<option value='" . $row[id_localidad] . "'>" . $row[localidad] ."</option>";
 }
  
 ?>

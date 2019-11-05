@@ -10,4 +10,5 @@ $enlace = mysqli_connect(_DB_SERVER_,_DB_USER_,_DB_PASSWD_,_DB_NAME_);
         printf("Falló la conexión: %s\n", mysqli_connect_error());
         exit();
     }
+mysqli_set_charset($enlace,'utf8');
 ?>

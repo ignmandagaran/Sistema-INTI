@@ -80,7 +80,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 
                       //Ciclo donde se trae todas las provincias de la base de datos. variable $enlace heredada de conexion.php
                       foreach ($enlace->query($query_provincias) as $row){
-                        echo '<option value="'.$row[id_provincia].'">'. utf8_encode($row[provincia]).'</option>';
+                        echo '<option value="'.$row[id_provincia].'">'. $row[provincia].'</option>';
 
                       }
                       ?>

@@ -16,7 +16,6 @@ include ("conexion.php");
     $consultaIgual = mysqli_query($enlace, "SELECT * FROM clientes WHERE cuit='$cuit'");
     $query = "INSERT INTO `clientes` (`id_cliente`, `nombre`, `cuit`, `rubro`, `id_localidad`, `actividad_principal`, `visible`)
               VALUES(NULL,'$nombre', '$cuit','$rubro','$localidad','$descripcion', '$visible')";
-    echo $query;
     if(mysqli_num_rows($consultaIgual) == 0){
             $insert = mysqli_query($enlace,$query) or die(mysqli_error($enlace));
             if($insert){
