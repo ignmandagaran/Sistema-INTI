@@ -41,31 +41,31 @@ include 'vendor/php/conexion.php';
           <div class="card-body">
             <form action="vendor/php/add_visita.php" method="POST">
               <div class="form-row">
-              <div class="form-group col-md-4 col-sm-4">
-                      <label for="tema">Cuit</label>
-                      <select class="form-control" id="select_id" name="cuit" required>
-                      <option value=''>Seleccionar cuit..</option>
-                        <?php 
-                        //Ciclo donde se trae todos los cuit de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
-                       foreach($enlace->query($query_cuit) AS $opciones): ?>
-                       <option value="<?php echo $opciones ['id_cliente'] ?>"> <?php echo $opciones ['cuit'] ?></option>
-                       <?php endforeach ?>  
-                      </select>
-                </div>
+                <div class="form-group col-md-4 col-sm-4">
+                    <label for="tema">Cuit</label>
+                    <select class="form-control" id="select_id" name="cuit" required>
+                    <option value=''>Seleccionar cuit..</option>
+                      <?php 
+                      //Ciclo donde se trae todos los cuit de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                      foreach($enlace->query($query_cuit) AS $opciones): ?>
+                      <option value="<?php echo $opciones ['id_cliente'] ?>"> <?php echo $opciones ['cuit'] ?></option>
+                      <?php endforeach ?>  
+                    </select>
+                  </div>
                 <div class="form-group date form_datetime col-md-4">
                   <label class="control-label" for="datetimepicker-default">Fecha</label>
 	              <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha" required/>
                 </div>
                 <div class="form-group col-md- col-sm-4">
-                      <label for="tema">Tipo Visita</label>
-                      <select class="form-control" id="select_id" name="tipo" required>
-                      <option value=''>Seleccionar tipo..</option>
-                        <?php 
-                        //Ciclo donde se trae todos los tipos de visita (visibles) de la base de datos. variable $enlace heredada de conexion.php
-                       foreach($enlace->query($query_tipo_visitas) AS $opciones): ?>
-                       <option value="<?php echo $opciones ['id_tipo_visita'] ?>"> <?php echo $opciones ['tipo_visita'] ?></option>
-                       <?php endforeach ?>  
-                      </select>   
+                    <label for="tema">Tipo Visita</label>
+                    <select class="form-control" id="select_id" name="tipo" required>
+                    <option value=''>Seleccionar tipo..</option>
+                      <?php 
+                      //Ciclo donde se trae todos los tipos de visita (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                      foreach($enlace->query($query_tipo_visitas) AS $opciones): ?>
+                      <option value="<?php echo $opciones ['id_tipo_visita'] ?>"> <?php echo $opciones ['tipo_visita'] ?></option>
+                      <?php endforeach ?>  
+                    </select>   
                 </div>
                 <div class="form-group col-md-4">
                     <label for="sel1">Selecciona proyecto:</label>
@@ -99,13 +99,14 @@ include 'vendor/php/conexion.php';
                     </select>
                     <a><p>Para seleccionar multiples asesores debe conbinar (click+ctrl)</p></a>
                 </div>
+              
+                <div class="form-group">
+                  <label for="inputAddress2">Observaciones</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" name="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>
+                </div>
+                <div class="form-group">
+                <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
-              <div class="form-group">
-                <label for="inputAddress2">Observaciones</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" name="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>
-              </div>
-              <div class="form-group">
-              <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
             </form>
           </div>

@@ -25,7 +25,8 @@ if(isset($_POST['proyecto'])){
     INNER JOIN proyectos p ON p.id_proyecto=c.id_proyecto WHERE c.visible=1 AND titulo_proyecto=$proyecto";
     
 }
-    $query_buscar_capacitaciones= 'SELECT * FROM capacitaciones C 
+    $query_buscar_capacitaciones= 'SELECT c.id_capacitacion, c.titulo_capacitacion, tc.id_tipo_capacitacion, c.fecha_inicio, c.fecha_fin, c.observaciones 
+    FROM capacitaciones C 
     INNER JOIN tipo_capacitaciones tc ON tc.id_tipo_capacitacion=c.id_tipo_capacitacion
     INNER JOIN proyectos p ON p.id_proyecto=c.id_proyecto WHERE c.visible=1';
   

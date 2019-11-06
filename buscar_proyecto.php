@@ -25,7 +25,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 
 <!--Fuente Iconos-->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
   <!-- Navbar include -->
@@ -122,8 +122,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                   <?php
                     $result = mysqli_query($enlace,$query_buscar_proyectos) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){ 
-                      $observacionesModal=$row['observaciones'];
-                      ?>
+                      $observacionesModal=$row['observaciones'];?>
                        <tr>
                           <td><?php echo $row['id_proyecto'];?></td>
                           <td><?php echo $row['titulo_proyecto'];?></td>

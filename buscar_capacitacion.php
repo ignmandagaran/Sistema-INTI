@@ -138,9 +138,8 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                   <tr>
                     <?php
                     $result = mysqli_query($enlace,$query_buscar_capacitaciones) or die($enlace->error);
-                    while ($row= $result->fetch_assoc()){
-                      $observacionesModal=$row['observaciones']; 
-                      ?>
+                    while ($row = $result->fetch_assoc()){
+                      $observacionesModal=$row['observaciones'];?>
                        <tr>
                           <td><?php echo $row['id_capacitacion'];?></td>
                           <td><?php echo $row['titulo_capacitacion'];?></td>
