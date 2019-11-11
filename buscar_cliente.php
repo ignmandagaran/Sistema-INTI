@@ -54,41 +54,65 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             <i class="fas fa-fw fa-plus-circle"></i>
             Buscar clientes por:</div>
           <div class="card-body">
-            <form action="" method="POST">
+            <form method="get">
               <div class="form-row">
               <div class="form-group col-md-4 col-sm-4">
-                      <label for="tema">Cuit</label>
-                      <select class="form-control" id="select_id" name="cuit">
-                      <option value=''>Seleccionar cuit..</option>
+                      <label for="tema">CUIT</label>
+                      <select class="form-control" id="select_cuit" name="cuit">
+                      <option value=''>Seleccionar cuit...</option>
                         <?php 
                         //Ciclo donde se trae todos los cuit de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
-                       foreach($enlace->query($query_cuit) AS $opciones): ?>
-                       <option value="<?php echo $opciones ['id_cliente'] ?>"> <?php echo $opciones ['cuit'] ?></option>
+                       foreach($enlace->query($query_clientes) AS $row): ?>
+                       <option value="<?php echo $row ['id_cliente'] ?>"> <?php echo $row ['cuit'] ?></option>
                        <?php endforeach ?>  
                       </select>
                 </div>
                 <div class="form-group col-md-4 col-sm-4">
                       <label for="tema">Nombre</label>
-                      <select class="form-control" id="select_id" name="nombre">
-                      <option value=''>Seleccionar nombre..</option>
+                      <select class="form-control" id="select_nombre" name="nombre">
+                      <option value=''>Seleccionar nombre...</option>
                         <?php 
                         //Ciclo donde se trae todos los nombres de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
-                       foreach($enlace->query($query_nombres) AS $opciones): ?>
-                       <option value="<?php echo $opciones ['id_cliente'] ?>"> <?php echo $opciones ['nombre'] ?></option>
-                       <?php endforeach ?>  
+                        foreach($enlace->query($query_clientes) AS $row): ?>
+                        <option value="<?php echo $row ['id_cliente'] ?>"> <?php echo $row ['nombre'] ?></option>
+                        <?php endforeach ?>  
                       </select>
                 </div>
                 <div class="form-group col-md-4 col-sm-4">
                           <label for="tema">Localidad </label>
-                          <select class="form-control" id="select_loc" name="localidad" required>
-                            <option value="">Seleccione localidad...</option>
+                          <select class="form-control" id="select_localidad" name="localidad">
+                            <option value="">Seleccionar localidad...</option>
                             <?php 
                             //Ciclo donde se trae todas las localidades (visibles) de la base de datos. variable $enlace heredada de conexion.php
-                             foreach($enlace->query($query_localidades) AS $opciones): ?>
+                             foreach($enlace->query($query_localidadesClientes) AS $opciones): ?>
                             <option value="<?php echo $opciones ['id_localidad'] ?>"> <?php echo $opciones ['localidad'] ?></option>
                             <?php endforeach ?>   
                           </select>
                           </div>
+              </div>
+              <div class="form-row">
+              <div class="form-group col-md-4 col-sm-4">
+                      <label for="tema">Actividad Principal</label>
+                      <select class="form-control" id="select_actividad" name="actividad">
+                      <option value=''>Seleccionar actividad principal...</option>
+                        <?php 
+                        //Ciclo donde se trae todos los cuit de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                       foreach($enlace->query($query_clientes) AS $row): ?>
+                       <option value="<?php echo $row ['actividad_principal'] ?>"> <?php echo $row ['actividad_principal'] ?></option>
+                       <?php endforeach ?>  
+                      </select>
+                </div>
+                <div class="form-group col-md-4 col-sm-4">
+                      <label for="tema">Rubro</label>
+                      <select class="form-control" id="select_rubro" name="rubro">
+                      <option value=''>Seleccionar rubro...</option>
+                        <?php 
+                        //Ciclo donde se trae todos los nombres de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                        foreach($enlace->query($query_clientes) AS $row): ?>
+                        <option value="<?php echo $row ['rubro'] ?>"> <?php echo $row ['rubro'] ?></option>
+                        <?php endforeach ?>  
+                      </select>
+                </div>
               </div>
               <a href="new_cliente.html"><p>Puede agregar un cliente AQUI</p></a>
               <button type="submit" class="btn btn-primary">Buscar</button>
@@ -130,7 +154,35 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <tbody>
                 <tr>
                 <?php
-                    $result = mysqli_query($enlace,$query_buscar_clientes) or die($enlace->error);
+
+                    $query_aConsultar = $query_clientes;
+
+                    $cuit = $_GET["cuit"];
+                    if (!empty ($cuit)){
+                    $query_aConsultar.=" AND (id_cliente=$cuit)";
+                    }
+
+                    $nombre = $_GET["nombre"];
+                    if (!empty ($nombre)){
+                      $query_aConsultar.=" AND (id_cliente=$nombre)";
+                      }
+                    
+                    $localidad = $_GET["localidad"];
+                    if (!empty ($localidad)){
+                      $query_aConsultar.=" AND (id_localidad=$localidad)";
+                      }
+                    
+                    $actividad = $_GET["actividad"];
+                    if (!empty ($_GET["actividad"])){
+                      $query_aConsultar.=" AND (actividad_principal='$actividad')";
+                      }
+                    
+                    $rubro = $_GET["rubro"];
+                    if (!empty ($_GET["rubro"])){
+                      $query_aConsultar.=" AND (rubro='$rubro')";
+                      }
+
+                    $result = mysqli_query($enlace,$query_aConsultar) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){ 
                       ?>
                        <tr>
