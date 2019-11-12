@@ -87,6 +87,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       </select>
                   </div>
                   <div class="form-group col-sm-4">
+                    <select id="localidad-select">
                     </select>
                   </div>
 
