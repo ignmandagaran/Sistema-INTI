@@ -96,8 +96,7 @@ if($userBD == $userPOSTMinusculas and $passPOST == $passwordBD){
 //Si los datos no son correctos, o están vacíos, muestra un error
 //Además, hay un script que vacía los campos con la clase "acceso" (formulario)
 } else if ( $userBD != $userPOSTMinusculas || $userPOST == "" || $passPOST == "" || !password_verify($passPOST, $passwordBD) ) {
-	die ('<script>$(".acceso").val("");</script>
-Los datos de acceso son incorrectos');
+	die ("<script>alert(\"El usuario o la contraseña son incorrectos.\");window.location='../../login.php';</script>");
 } else {
 	die('Error');
 };

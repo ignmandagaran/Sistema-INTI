@@ -20,13 +20,13 @@ require 'vendor/php/sesiones.php';
         <form name="acceso" method="post" action="vendor/php/acceder.php" enctype="multipart/form-data" name="logueo" id="acceso" accept-charset="utf-8">
           <div class="form-group">
             <div class="form-label-group">
-              <input name="usuario" id="usuario" type="text" id="inputUsuario" class="form-control" placeholder="Usuario" required="required" autofocus="autofocus">
+              <input name="usuario" id="usuario" type="text" id="inputUsuario" class="form-control" required="required" autofocus="autofocus">
               <label for="inputEmail">Usuario</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input name="clave" id="clave" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required" >
+              <input name="clave" id="clave" type="password" id="inputPassword" class="form-control" required="required" >
               <label for="inputPassword">Contraseña</label>
             </div>
           </div>
@@ -58,43 +58,6 @@ require 'vendor/php/sesiones.php';
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <script>
-/*$(document).ready(function() 
-{
-  $('#login').click(function(){
-		var username=$("#usuario").val();
-		var password=$("#clave").val();
-		var dataString = 'usuario='+username+'&clave='+password;
-
-		if($.trim(username).length>0 && $.trim(password).length>0){
-			$.ajax({
-				type: "POST",
-				url: "vendor/php/acceder.php",
-				data: dataString,
-				cache: false,
-				beforeSend: function(){ $("#login").val('Connecting...');},
-				success: function(data){
-							if(data){
-								//$("body").load("principal.php").hide().fadeIn(1500).delay(6000);
-								//or
-								window.location.href = "principal.php";
-								}
-								else{
-								//Shake animation effect.
-								$('#box').shake();
-								$("#login").val('Login')
-								$("#error").html("<span style='color:#cc0000'>Error:</span> Invalid username and password. ");
-								}
-							}
-			});
-		}
-		return false;
-    alert("No funciona");
-	});*/
-
-});
-</script>
 
 </body>
 
