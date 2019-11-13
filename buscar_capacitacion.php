@@ -2,7 +2,6 @@
 session_start();
 include 'vendor/php/querys.php';
 include_once 'vendor/php/conexion.php';
-include_once 'vendor/php/filtros_capacitaciones.php';
 
 //Comprobamos si el usario está logueado
 //Si no lo está, se le redirecciona al index

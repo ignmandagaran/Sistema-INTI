@@ -25,13 +25,25 @@ include ("conexion.php");
                                                 or die(mysqli_error($enlace));
             if($insert){
                 print "<script>alert(\"Registro exitoso.\");window.location='../../new_modulo.php';</script>";
-                $id_modulo= mysqli_query($enlace, "SELECT id_modulo FROM modulos WHERE titulo_modulo='$titulo'");
-                $obj = $id_modulo->fetch_object();
-                $modulo_id = $obj->id_modulo;
+                $getIdmodulo= mysqli_query($enlace, "SELECT MAX(id_modulo) as id FROM modulos");
+                foreach($getIdmodulo AS $row){
+                  $id_modulo = $row['id'];
+                }
+
                 $insert2= mysqli_query($enlace, "INSERT INTO modulos_usuarios(id_modulo, id_usuario, visible)
-                                                VALUES('$modulo_id', '$docentes' '$visible')") 
-                                                or die(mysqli_error($enlace));                                    
-                $update= mysqli_query($enlace, "UPDATE capacitaciones SET asistentes='$asistentes', empresas='$empresas' WHERE id_capacitacion='$capacitacion'");
+                                                VALUES('$id_modulo', '$docentes', '$visible')") 
+                                                or die(mysqli_error($enlace));
+                                                                                  
+                $update= mysqli_query($enlace, "UPDATE capacitaciones 
+                                                SET asistentes =
+                                                  (SELECT sum(cantidad_asistentes) total_asistentes
+                                                  FROM modulos
+                                                  WHERE id_capacitacion = '$capacitacion'), 
+                                                  empresas =
+                                                  (SELECT sum(cantidad_empresas) total_empresas
+                                                  FROM modulos
+                                                  WHERE id_capacitacion = '$capacitacion')
+                                                WHERE id_capacitacion = '$capacitacion';");
             }else
               print "<script>alert(\"No se pudo guardar el registro.\");window.location='../../new_modulo.php';</script>";
             
@@ -42,3 +54,14 @@ include ("conexion.php");
 mysqli_close($enlace);
 
 ?>
+
+UPDATE capacitaciones 
+SET asistentes =
+  (SELECT sum(asistentes) total_asistentes
+	FROM modulos
+  WHERE id_capacitacion = '$capacitacion')
+SET empresas =
+  (SELECT sum(empresas) total_empresas
+	FROM modulos
+	WHERE id_capacitacion = '$capacitacion')
+WHERE id_capacitacion = '$capacitacion';

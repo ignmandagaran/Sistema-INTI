@@ -70,7 +70,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
               <div class="form-row">
               <div class="form-group col-md-6">
                     <label for="sel1">Selecciona proyecto:</label>
-                    <select class="form-control" name="proyecto" id="sel1" required>
+                    <select class="form-control" name="proyecto" id="sel1">
                     <option value="" > Seleccionar proyecto </option>
                       <?php 
                         //Ciclo donde se trae todos los proyectos (visibles) de la base de datos. variable $enlace heredada de conexion.php
@@ -130,15 +130,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             $(function () {
                 $('#datetimepicker1').datetimepicker({
                     timeZone:'UTC -3',
-                    format:'DD/MM/YYYY HH:mm',
-                    icons: {time:'far fa-clock'}
-                    
-                });
-            });
-            $(function () {
-                $('#datetimepicker2').datetimepicker({
-                    timeZone:'UTC -3',
-                    format:'DD/MM/YYYY HH:mm',
+                    format:'DD/MM/YYYY',
                     icons: {time:'far fa-clock'}
                     
                 });
