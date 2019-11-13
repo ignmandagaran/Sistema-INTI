@@ -154,7 +154,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <tbody>
                 <tr>
                 <?php
-
+                    // FILTROS PARA BUSCAR CLIENTES
                     $query_aConsultar = $query_clientes;
 
                     $cuit = $_GET["cuit"];
@@ -169,7 +169,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     
                     $localidad = $_GET["localidad"];
                     if (!empty ($localidad)){
-                      $query_aConsultar.=" AND (id_localidad=$localidad)";
+                      $query_aConsultar.=" AND (c.id_localidad=$localidad)";
                       }
                     
                     $actividad = $_GET["actividad"];

@@ -19,7 +19,7 @@ $query_localidades = "SELECT * FROM localidades WHERE visible=1 ";
 
 //Query para cargar localidades (visibles) en select
 $query_localidadesClientes = 
-"SELECT c.localidad 
+"SELECT c.localidad, c.id_localidad  
 FROM localidades c INNER JOIN clientes cl ON c.id_localidad = cl.id_localidad
 WHERE cl.visible=1";
 
@@ -39,7 +39,7 @@ $query_tipo_proyectos = "SELECT * FROM tipo_proyectos WHERE visible=1 ";
 $query_tipo_visitas = "SELECT * FROM tipo_visitas WHERE visible=1";
 
 //Query para cargar cuits (visibles) en select
-$query_clientes = "SELECT * FROM clientes WHERE visible=1 ";
+$query_clientes = "SELECT c.id_cliente,c.nombre,c.cuit,c.actividad_principal,l.localidad, c.rubro, c.id_localidad  FROM clientes c INNER JOIN localidades l ON c.id_localidad=l.id_localidad WHERE c.visible=1 ";
 
 
 //Query para cargar modulos (visibles) en select

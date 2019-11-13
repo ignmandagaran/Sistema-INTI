@@ -61,7 +61,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                        <option value="<?php echo $opciones ['id_capacitacion'] ?>"> <?php echo $opciones ['titulo_capacitacion'] ?></option>
                        <?php endforeach ?>  
                       </select>
-                      </div>
+                  </div>
                 <div class="form-group col-md-8 col-sm-12">
                   <label for="inputTitulo">Titulo del Modulo</label>
                   <input type="text" require class="form-control" id="inputTitulo" name="titulo" placeholder="Ingrese título..." required>
@@ -165,7 +165,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             $(function () {
                 $('#datetimepicker1').datetimepicker({
                     timeZone:'UTC -3',
-                    format:'DD/MM/YYYY HH:mm',
+                    format:'DD/MM/YYYY',
                     icons: {time:'far fa-clock'}
                     
                 });
