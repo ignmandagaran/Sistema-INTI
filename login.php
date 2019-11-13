@@ -41,8 +41,8 @@ require 'vendor/php/sesiones.php';
           <button class="btn btn-primary btn-block" type="submit" id="" >Ingresar</button>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="register.html">Registrarse</a>
-          <a class="d-block small" href="forgot-password.html">Recuperar contraseña</a>
+          <a class="d-block small mt-3" href="#" onclick="alert('Para registrarse al sistema, solicitelo al administrador.')">Registrarse</a>
+          <a class="d-block small" href="#" onclick="alert('Para cambiar su contraseña, solicitelo al administrador.')">Recuperar contraseña</a>
         </div>
       </div>
     </div>
