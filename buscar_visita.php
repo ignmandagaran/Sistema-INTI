@@ -1,7 +1,17 @@
-<?php 
+<?php
 session_start();
 include 'vendor/php/querys.php';
-include_once 'vendor/php/conexion.php';
+include 'vendor/php/conexion.php';
+
+//Comprobamos si el usario está logueado
+//Si no lo está, se le redirecciona al index
+//Si lo está, definimos el botón de cerrar sesión y la duración de la sesión
+if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
+	header('Location: index.php');
+} else {
+	$estado = $_SESSION['usuario'];
+	require('vendor/php/sesiones.php');
+};
 ?>
 
 <!DOCTYPE html>
