@@ -152,7 +152,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <td><?php echo $row['fecha'];?></td>
                           <td><?php echo $row['hora_inicio'];?></td>
                           <td><?php echo $row['hora_inicio'];?></td>
-                          <td><?php //echo $row['usuario'];?></td>
+                          <td><?php echo $row['nombre'];?></td>
                           <td><?php echo $row['cantidad_asistentes'];?></td>
                           <td><?php echo $row['cantidad_empresas'];?></td>
                           <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Ver</button></td>

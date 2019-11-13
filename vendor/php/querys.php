@@ -46,7 +46,9 @@ $query_clientes = "SELECT c.id_cliente,c.nombre,c.cuit,c.actividad_principal,l.l
 $query_buscar_modulos= 'SELECT * FROM modulos m 
                     INNER JOIN temas t ON t.id_tema=m.id_tema
                     INNER JOIN localidades l ON l.id_localidad=m.id_localidad
-                                       INNER JOIN capacitaciones c ON c.id_capacitacion=m.id_capacitacion WHERE c.visible=1';
+                    INNER JOIN modulos_usuarios mu ON mu.id_modulo=m.id_modulo
+                    INNER JOIN usuarios u ON u.id_usuario=mu.id_usuario
+                    INNER JOIN capacitaciones c ON c.id_capacitacion=m.id_capacitacion WHERE c.visible=1';
 
 //Query para cargar proyectos (visibles) en select
 $query_buscar_proyectos= 'SELECT * FROM proyectos p 
