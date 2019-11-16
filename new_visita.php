@@ -51,7 +51,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
           <div class="card-body">
             <form action="vendor/php/add_visita.php" method="POST">
               <div class="form-row">
-                <div class="form-group col-md-4 col-sm-4">
+                <div class="form-group col-md-3 col-sm-3">
                     <label for="tema">Cuit</label>
                     <select class="form-control" id="select_id" name="cuit" required>
                     <option value=''>Seleccionar cuit..</option>
@@ -62,11 +62,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       <?php endforeach ?>  
                     </select>
                   </div>
-                <div class="form-group date form_datetime col-md-4">
-                  <label class="control-label" for="datetimepicker-default">Fecha</label>
-	              <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha" required/>
-                </div>
-                <div class="form-group col-md- col-sm-4">
+                  <div class="form-group col-md-3 col-sm-3">
                     <label for="tema">Tipo Visita</label>
                     <select class="form-control" id="select_id" name="tipo" required>
                     <option value=''>Seleccionar tipo..</option>
@@ -77,7 +73,18 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       <?php endforeach ?>  
                     </select>   
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3 col-sm-3">
+                    <label for="tema">Tipo Asistencia</label>
+                    <select class="form-control" id="select_id" name="tipo2" required>
+                    <option value=''>Seleccionar tipo..</option>
+                      <?php 
+                      //Ciclo donde se trae todos los tipos de visita (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                      foreach($enlace->query($query_tipo_asistencias) AS $opciones): ?>
+                      <option value="<?php echo $opciones ['id_tipo_asistencia'] ?>"> <?php echo $opciones ['tipo_asistencia'] ?></option>
+                      <?php endforeach ?>  
+                    </select>   
+                </div>
+                <div class="form-group col-md-3 col-sm-3">
                     <label for="sel1">Selecciona proyecto:</label>
                     <select class="form-control" name="proyecto" id="sel1" required>
                     <option value="" > Seleccionar proyecto </option>
@@ -88,6 +95,10 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                        <?php endforeach ?>                
                     </select>
                 </div> 
+                <div class="form-group date form_datetime col-md-4">
+                  <label class="control-label" for="datetimepicker-default">Fecha</label>
+	              <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha" required/>
+                </div>
                 <div class="form-group date form_datetime col-md-4">
                   <label class="control-label" for="datetimepicker-default">Hora inicio</label>
 	              <input type='text' class="form-control" id='datetimepicker2' name="inicio" placeholder="Ingresar hora de inicio" required/>
@@ -109,7 +120,6 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     </select>
                     <a><p>Para seleccionar multiples asesores debe conbinar (click+ctrl)</p></a>
                 </div>
-              
                 <div class="form-group">
                   <label for="inputAddress2">Observaciones</label>
                   <textarea class="form-control" id="exampleFormControlTextarea1" name="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>

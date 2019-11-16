@@ -106,8 +106,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       <th>#</th>
                       <th>CUIT</th>
                       <th>Tipo</th>
+                      <th>Asistencia</th>
                       <th>Proyecto</th>
-                      <th>Fecha</th>
+                      <th>  Fecha  </th>
                       <th>Fin Asistencia</th>
                       <th>Inicio</th>
                       <th>Fin</th>
@@ -123,6 +124,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                   <th>#</th>
                       <th>CUIT</th>
                       <th>Tipo</th>
+                      <th>Asistencia</th>
                       <th>Proyecto</th>
                       <th>Fecha</th>
                       <th>Fin Asistencia</th>
@@ -141,7 +143,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     $result = mysqli_query($enlace,$query_buscar_visitas) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){
                       $observacionesModal=$row['observaciones'];
-                      $usuariosModal=$row['nombre']; 
+                      $usuariosModal=$row['nombre'];
                       ?>
                        <tr>
                           <td><?php echo $row['id_visita'];?></td>
@@ -156,9 +158,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                            echo "Sin finalizar"?></td>
                           <td><?php echo $row['hora_inicio'];?></td>
                           <td><?php echo $row['hora_fin'];?></td>
-                          <td><a href="javascript:void(0);" title="Ver Docentes" data-toggle="modal" data-target="#modalUsuarios" onclick="carga_ajax('<?php echo $usuariosModal;?>','modalUsuarios','vendor/php/ajax/usuario_ajax.php');"><i class="material-icons">visibility</i></a></td>
-                          <td><a href="javascript:void(0);" title="Ver Observaciones" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php echo $observacionesModal;?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
-                          <td><a href="vendor/php/finalizar.php?visita= <?php echo $row['id_visita'];?>" onclick= "return confirmation()" class="delete" title="Finalizar" data-toggle="tooltip"><i class="material-icons">check_circle</i></cente<i></a></td>
+                          <td><a href="javascript:void(0);" title="Ver asesores" data-toggle="modal" data-target="#modalUsuarios" onclick="carga_ajax('<?php echo $usuariosModal;?>','modalUsuarios','vendor/php/ajax/usuario_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td><a href="javascript:void(0);" title="Ver observaciones" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php echo $observacionesModal;?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td><a href="vendor/php/finalizar.php?visita= <?php echo $row['id_visita'];?>" onclick= "return confirmation()" class="delete" title="Finalizar" data-toggle="tooltip"><i class="material-icons">check_circle</i></a></td>
                           <td><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
                           <td><a href="vendor/php/borrado_logico.php?visita= <?php echo $row['id_visita'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
                        </tr>
@@ -184,9 +186,10 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
     <!-- /#wrapper -->
 
    <!--Include modal Observacion-->
-   
    <?php include 'vendor/php/includes/modal_observacion.php'?>
 
+   <!--Include modal Asesores-->
+   <?php include 'vendor/php/includes/modal_asesores.php'?>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -198,21 +201,6 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 
     <!-- Scripts include-->
     <?php include 'vendor/php/includes/scripts.php'?>
-
-    <!--Script Confirmacion-->
-    <script type="text/javascript">
-     function confirmation() 
-     {
-        if(confirm("Desea seguir?"))
-    {
-        return true;
-    }
-        else
-    {
-        return false;
-    }
-        }
-    </script>
 
     <!--Script Modal Ajax-->
     <script>
@@ -229,6 +217,21 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
           }
         );
       }
+    </script>  
+
+    <!--Script Confirmacion-->
+    <script type="text/javascript">
+     function confirmation() 
+     {
+        if(confirm("Desea seguir?"))
+	{
+	   return true;
+	}
+	else
+	{
+	   return false;
+	}
+     }
     </script>
 
     <!--Script datetimepicker-->
