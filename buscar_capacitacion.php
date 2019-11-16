@@ -145,13 +145,16 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <td><?php echo $row['tipo_capacitacion'];?></td>
                           <td><?php echo $row['titulo_proyecto'];?></td>
                           <td><?php echo $row['fecha_inicio'];?></td>
-                          <td><?php echo $row['fecha_fin'];?></td>
+                          <td><?php if($row['fecha_fin']!= '')
+                                      echo $row['fecha_fin'];
+                                    else
+                                      echo "Sin finalizar"?></td>
                           <td><?php echo $row['asistentes'];?></td>
                           <td><?php echo $row['empresas'];?></td>
-                          <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Ver</button></td>
-                          <td><a href="vendor/php/finalizar.php?capacitacion= <?php echo $row['id_capacitacion'];?>" onclick= "return confirmation()" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">check_circle</i></a></td>
-                          <td><a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
-                          <td><a href="vendor/php/borrado_logico.php?capacitacion= <?php echo $row['id_capacitacion'];?>" onclick= "return confirmation()" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
+                          <td><a href="javascript:void(0);" title="Ver Observación" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php echo $observacionesModal;?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td><a href="vendor/php/finalizar.php?capacitacion= <?php echo $row['id_capacitacion'];?>" onclick= "return confirmation()" class="delete" title="Finalizar" data-toggle="tooltip"><i class="material-icons">check_circle</i></a></td>
+                          <td><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                          <td><a href="vendor/php/borrado_logico.php?capacitacion= <?php echo $row['id_capacitacion'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
                        </tr>
                     <?php }?>  
                      </tr>
@@ -189,6 +192,23 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 
     <!-- Scripts include-->
     <?php include 'vendor/php/includes/scripts.php'?>
+
+    <!--Script Modal Ajax-->
+    <script>
+      function carga_ajax (x,div,url)
+      {
+        //alert(ruta);
+        $.post
+        (
+          url,
+          {x:x},
+          function (resp)
+          {
+            $("#"+div+"").html (resp);
+          }
+        );
+      }
+    </script>
 
     <!--Script Confirmacion-->
     <script type="text/javascript">

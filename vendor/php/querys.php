@@ -43,17 +43,18 @@ $query_clientes = "SELECT c.id_cliente,c.nombre,c.cuit,c.actividad_principal,l.l
 
 
 //Query para cargar modulos (visibles) en select
-$query_buscar_modulos= 'SELECT * FROM modulos m 
+$query_buscar_modulos= 'SELECT m.id_modulo, c.titulo_capacitacion, m.titulo_modulo, t.tema, l.localidad, m.fecha, m.hora_inicio, m.hora_fin, m.cantidad_asistentes, m.cantidad_empresas, u.nombre, m.observaciones FROM modulos m 
                     INNER JOIN temas t ON t.id_tema=m.id_tema
                     INNER JOIN localidades l ON l.id_localidad=m.id_localidad
+                    INNER JOIN capacitaciones c ON c.id_capacitacion=m.id_capacitacion 
                     INNER JOIN modulos_usuarios mu ON mu.id_modulo=m.id_modulo
-                    INNER JOIN usuarios u ON u.id_usuario=mu.id_usuario
-                    INNER JOIN capacitaciones c ON c.id_capacitacion=m.id_capacitacion WHERE c.visible=1';
-
+                    INNER JOIN usuarios u ON mu.id_usuario=u.id_usuario
+                    WHERE c.visible=1 ORDER BY m.fecha DESC';
+                    
 //Query para cargar proyectos (visibles) en select
 $query_buscar_proyectos= 'SELECT * FROM proyectos p 
                     INNER JOIN tipo_proyectos tp ON tp.id_tipo_proyecto=p.id_tipo_proyecto
-                    WHERE p.visible=1';
+                    WHERE p.visible=1 ORDER BY p.fecha_inicio DESC';
 
 
 //Query para cargar clienttes (visibles) en select
@@ -65,18 +66,24 @@ $query_buscar_clientes= 'SELECT * FROM clientes c
 $query_buscar_indes= 'SELECT * FROM indes i 
                     INNER JOIN tipo_indes ti ON ti.id_tipo_indes=i.id_tipo_indes
                     INNER JOIN temas t ON t.id_tema=i.id_tema
-                    WHERE i.visible=1';
+                    WHERE i.visible=1 ORDER BY i.fecha DESC';
 
 //Query para cargar visitas (visibles) en select
-$query_buscar_visitas= 'SELECT * FROM visitas v 
+$query_buscar_visitas= 'SELECT v.id_visita, c.cuit, tv.tipo_visita, ta.tipo_asistencia,
+                     p.titulo_proyecto, v.fecha, v.fecha_fin, v.hora_inicio, v.hora_fin, u.nombre, v.observaciones FROM visitas v 
+                     INNER JOIN clientes c ON c.id_cliente=v.id_cliente
                     INNER JOIN tipo_visitas tv ON tv.id_tipo_visita=v.id_tipo_visita
+                    INNER JOIN tipo_asistencias ta ON tv.id_tipo_visita=ta.id_tipo_visita
                     INNER JOIN proyectos p ON p.id_proyecto=v.id_proyecto
-                    WHERE v.visible=1';
+                    INNER JOIN visita_usuario vu ON vu.id_visita=v.id_visita
+                    INNER JOIN usuarios u ON vu.id_usuario=u.id_usuario
+                    WHERE v.visible=1  ORDER BY v.fecha DESC';
 
-$query_buscar_capacitaciones= 'SELECT c.id_capacitacion, c.titulo_capacitacion, tc.id_tipo_capacitacion, c.fecha_inicio, c.fecha_fin, c.asistentes, c.empresas, c.observaciones 
-                                FROM capacitaciones c 
+//Query para cargar capacitaciones (visibles)
+$query_buscar_capacitaciones= 'SELECT c.id_capacitacion, c.titulo_capacitacion, tc.tipo_capacitacion, p.titulo_proyecto, c.fecha_inicio, c.fecha_fin, c.asistentes, c.empresas, c.observaciones 
+                                FROM capacitaciones C 
                                 INNER JOIN tipo_capacitaciones tc ON tc.id_tipo_capacitacion=c.id_tipo_capacitacion
-                                INNER JOIN proyectos p ON p.id_proyecto=c.id_proyecto WHERE c.visible=1';
+                                INNER JOIN proyectos p ON p.id_proyecto=c.id_proyecto WHERE c.visible=1 ORDER BY c.fecha_inicio DESC';
 
 //Query para cargar usuarios (visibles) en select
 $query_buscar_usuarios= 'SELECT u.id_usuario,u.usuario,u.fecha_alta,u.id_rol,u.visible,u.nombre,r.rol 

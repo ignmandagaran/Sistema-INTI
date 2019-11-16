@@ -140,22 +140,27 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     <?php
                     $result = mysqli_query($enlace,$query_buscar_visitas) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){
-                      $observacionesModal=$row['observaciones']; 
+                      $observacionesModal=$row['observaciones'];
+                      $usuariosModal=$row['nombre']; 
                       ?>
                        <tr>
                           <td><?php echo $row['id_visita'];?></td>
-                          <td><?php// echo $row['cuit'];?></td>
+                          <td><?php echo $row['cuit'];?></td>
                           <td><?php echo $row['tipo_visita'];?></td>
+                          <td><?php echo $row['tipo_asistencia'];?></td>
                           <td><?php echo $row['titulo_proyecto'];?></td>
                           <td><?php echo $row['fecha'];?></td>
-                          <td><?php echo $row['fecha_fin'];?></td>
+                          <td><?php if($row['fecha_fin']!= '')
+                           echo $row['fecha_fin'];
+                           else
+                           echo "Sin finalizar"?></td>
                           <td><?php echo $row['hora_inicio'];?></td>
                           <td><?php echo $row['hora_fin'];?></td>
-                          <td><?php //echo $row['nombre'];?></td>
-                          <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Ver</button></td>
-                          <td><a href="vendor/php/finalizar.php?visita= <?php echo $row['id_visita'];?>" onclick= "return confirmation()" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">check_circle</i></a></td>
-                          <td><a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
-                          <td><a href="vendor/php/borrado_logico.php?visita= <?php echo $row['id_visita'];?>" onclick= "return confirmation()" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
+                          <td><a href="javascript:void(0);" title="Ver Docentes" data-toggle="modal" data-target="#modalUsuarios" onclick="carga_ajax('<?php echo $usuariosModal;?>','modalUsuarios','vendor/php/ajax/usuario_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td><a href="javascript:void(0);" title="Ver Observaciones" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php echo $observacionesModal;?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td><a href="vendor/php/finalizar.php?visita= <?php echo $row['id_visita'];?>" onclick= "return confirmation()" class="delete" title="Finalizar" data-toggle="tooltip"><i class="material-icons">check_circle</i></cente<i></a></td>
+                          <td><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                          <td><a href="vendor/php/borrado_logico.php?visita= <?php echo $row['id_visita'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
                        </tr>
                     <?php }?>  
                      </tr>
@@ -199,14 +204,31 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
      function confirmation() 
      {
         if(confirm("Desea seguir?"))
-	{
-	   return true;
-	}
-	else
-	{
-	   return false;
-	}
-     }
+    {
+        return true;
+    }
+        else
+    {
+        return false;
+    }
+        }
+    </script>
+
+    <!--Script Modal Ajax-->
+    <script>
+      function carga_ajax (x,div,url)
+      {
+        //alert(ruta);
+        $.post
+        (
+          url,
+          {x:x},
+          function (resp)
+          {
+            $("#"+div+"").html (resp);
+          }
+        );
+      }
     </script>
 
     <!--Script datetimepicker-->

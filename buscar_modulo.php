@@ -111,9 +111,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       <th>Fecha</th>
                       <th>Inicio</th>
                       <th>Fin</th>
-                      <th>Docentes</th>
                       <th>Asistentes</th>
                       <th>Empresas</th>
+                      <th>Docentes</th>
                       <th>Observaciones</th>
                       <th>Modifiicar</th>
                       <th>Borrar</th>
@@ -129,9 +129,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       <th>Fecha</th>
                       <th>Inicio</th>
                       <th>Fin</th>
-                      <th>Docentes</th>
                       <th>Asistentes</th>
                       <th>Empresas</th>
+                      <th>Docentes</th>
                       <th>Observaciones</th>
                       <th>Modificar</th>
                       <th>Borrar</th>
@@ -142,6 +142,8 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                   <?php
                     $result = mysqli_query($enlace,$query_buscar_modulos) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){ 
+                      $observacionesModal=$row['observaciones'];
+                      $usuariosModal=$row['nombre'];
                       ?>
                        <tr>
                           <td><?php echo $row['id_modulo'];?></td>
@@ -152,12 +154,12 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <td><?php echo $row['fecha'];?></td>
                           <td><?php echo $row['hora_inicio'];?></td>
                           <td><?php echo $row['hora_inicio'];?></td>
-                          <td><?php echo $row['nombre'];?></td>
                           <td><?php echo $row['cantidad_asistentes'];?></td>
                           <td><?php echo $row['cantidad_empresas'];?></td>
-                          <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">Ver</button></td>
-                          <td><a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
-                          <td><a href="vendor/php/borrado_logico.php?modulo= <?php echo $row['id_modulo'];?>" onclick= "return confirmation()" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
+                          <td><a href="javascript:void(0);" title="Ver Docentes" data-toggle="modal" data-target="#modalUsuarios" onclick="carga_ajax('<?php echo $usuariosModal;?>','modalUsuarios','vendor/php/ajax/usuario_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td><a href="javascript:void(0);" title="VerObservaciones" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php echo $observacionesModal;?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                          <td><a href="vendor/php/borrado_logico.php?modulo= <?php echo $row['id_modulo'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
                        </tr>
                     <?php }?>  
                      </tr>
@@ -186,6 +188,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
    <!-- Logout Modal include-->
    <?php include 'vendor/php/includes/logout.php'?>
 
+   <!--Include Modal Asesores-->
+   <?php include 'vendor/php/includes/modal_asesores.php'?>
+
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
@@ -202,16 +207,32 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
      function confirmation() 
      {
         if(confirm("Desea seguir?"))
-	{
-	   return true;
-	}
-	else
-	{
-	   return false;
-	}
-     }
+    {
+        return true;
+    }
+        else
+    {
+        return false;
+    }
+        }
     </script>
 
+     <!--Script Modal Ajax-->
+     <script>
+      function carga_ajax (x,div,url)
+      {
+        //alert(ruta);
+        $.post
+        (
+          url,
+          {x:x},
+          function (resp)
+          {
+            $("#"+div+"").html (resp);
+          }
+        );
+      }
+    </script>
 
     <script type="text/javascript">
             $(function () {
