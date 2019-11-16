@@ -10,7 +10,7 @@
         <div class="modal-body">Selecciona "Salir" para cerrar tu sesión.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="vendor/php/desloguear.php">Salír</a>
+          <a class="btn btn-primary" href="vendor/php/desloguear.php">Salir</a>
         </div>
       </div>
     </div>

@@ -52,36 +52,36 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             
           <form action="vendor/php/add_indes.php" method="POST">
               <div class="form-row">
-              <div class="form-group col-md-6 col-sm-6">
+                <div class="form-group col-md-6 col-sm-6">
                   <label for="inputTipo">Titulo de Produccion</label>
                   <input type="text" class="form-control" id="inputCliente" name="titulo" placeholder="Ingresar titulo.." required>
                 </div>
-              <div class="form-group col-md-6 col-6">
-                        <label for="tema">Seleccionar tipo</label>
-                        <select class="form-control" id="selectema" name="tipo" required>
-                          <option>Selecione un tipo...</option>
-                              <?php
-                                 foreach($enlace->query($query_tipo_indes) as $opciones): ?>
-                         <OPTION value="<?php echo $opciones['id_tipo_indes'] ?>"><?php echo $opciones['tipo'] ?></OPTION>
-                              <?php endforeach ?> 
-                        </select>
-                </div>
-                </div>
-                <div class="form-row">
+                <div class="form-group col-md-6 col-6">
+                    <label for="tema">Seleccionar tipo</label>
+                    <select class="form-control" id="selectema" name="tipo" required>
+                      <option>Selecione un tipo...</option>
+                          <?php
+                          foreach($enlace->query($query_tipo_indes) as $opciones): ?>
+                      <OPTION value="<?php echo $opciones['id_tipo_indes'] ?>"><?php echo $opciones['tipo'] ?></OPTION>
+                          <?php endforeach ?> 
+                    </select>
+                  </div>
+              </div>
+              <div class="form-row">
                 <div class="form-group date form_datetime col-md-6 col-sm-6">
                     <label class="control-label" for="datetimepicker-default">Fecha</label>
                     <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha.."required />
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                 <label for="tema">Tema</label>
-                      <select class="form-control" id="select_id" name="tema" required>
+                    <select class="form-control" id="select_id" name="tema" required>
                       <option value=''>Seleccionar tema..</option>
                         <?php 
                         //Ciclo donde se trae todos los temas (visibles) de la base de datos. variable $enlace heredada de conexion.php
-                       foreach($enlace->query($query_temas) AS $opciones): ?>
-                       <option value="<?php echo $opciones ['id_tema'] ?>"> <?php echo $opciones ['tema'] ?></option>
-                       <?php endforeach ?>  
-                      </select>
+                        foreach($enlace->query($query_temas) AS $opciones): ?>
+                        <option value="<?php echo $opciones ['id_tema'] ?>"> <?php echo $opciones ['tema'] ?></option>
+                        <?php endforeach ?>  
+                    </select>
                   </div>
               </div>
               <div class="form-row">
