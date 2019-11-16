@@ -37,4 +37,10 @@ if(null!==($visita= $_GET['visita'])){
     mysqli_query($enlace, $borrado);
     header("Location: ../../buscar_visita.php");
 }
+
+if(null!==($usuario= $_GET['usuario'])){
+    $borrado= "UPDATE usuarios SET visible=0 WHERE id_usuario='$usuario'";
+    mysqli_query($enlace, $borrado);
+    header("Location: ../../matriz_privilegios.php");
+}
 ?>
