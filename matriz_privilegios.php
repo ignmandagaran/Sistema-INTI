@@ -90,7 +90,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                              <?php } else {?>
                              <td><span class="status text-danger">&bull;</span> Suspendido</td> 
                              <?php }?>
-                             <td><a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                             <td><a href="modificar_usuario.php?usuario=<?php echo $row['usuariominusculas'];?>"class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
                              <td><a href="vendor/php/borrado_logico.php?usuario= <?php echo $row['id_usuario'];?>" onclick= "return confirmation()" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
                        </tr>
                          <?php }?> 

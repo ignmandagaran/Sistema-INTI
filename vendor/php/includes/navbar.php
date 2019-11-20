@@ -51,7 +51,7 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="perfil.php">Perfil</a>
           <?php 
-            if ($_SESSION['usuario']=="Admin"){
+            if ($_SESSION['usuario']=="admin"){
             echo '<a class="dropdown-item" href="matriz_privilegios.php">Control de usuarios</a>';
             }
             ?>

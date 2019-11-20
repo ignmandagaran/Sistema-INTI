@@ -63,18 +63,28 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <?php 
-                                            $result = mysqli_query($enlace,$query_buscar_usuarios) or die($enlace->error);
+                                            <?php
+                                            $usuario_logueado = $_SESSION['usuario'];
+
+                                            $result_dedicacion = mysqli_query($enlace,$query_dedicacion."'".$usuario_logueado."';") or die($enlace->error);
+                                            if ($row = $result_dedicacion->fetch_assoc()){
+                                                $dedicacion_perfil = $row['dedicacion'];
+                                            }
+
+                                            $result = mysqli_query($enlace,$query_usuarios_perfil."'".$usuario_logueado."';") or die($enlace->error);
                                             if ($row= $result->fetch_assoc()){ ;?>
                                             <div class="profile-head">
                                                 <h5>
                                                 <!-- Muestra el rol del usuario según su perfil -->
-                                                <?php if ($row['id_rol']==1){ echo $row['id_rol']='Administrador';} else { echo $row['id_rol']='Usuario';}?>
+                                                <?php if ($row['id_rol']==1){ echo 'Administrador';} else { echo 'Usuario';}?>
                                                 </h5>
                                                 <h6>
                                                     Nodo Pampa - Mar del plata
                                                 </h6>
-                                                <p class="proile-rating">DEDICACION : <span>100%</span></p>
+                                                <?php
+                                                ?>
+                                                <p class="proile-rating">DEDICACION : <span><?php echo $dedicacion_perfil."%";?></span>        
+                                                <a href="#" class="settings" title="Modificar" data-toggle="modal" data-target="#modalDedicacion"><i class="material-icons">&#xE8B8;</i></a></p>
                                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                                     <li class="nav-item">
                                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Datos personales</a>
@@ -117,7 +127,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                                     <label>Nombre completo</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <p><?php echo $row['nombre'];?></p>
+                                                    <p><?php if($row['nombre']==NULL)
+                                                    echo "No informado";
+                                                    else echo $row['nombre'];?></p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -125,7 +137,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                                     <label>Legajo</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <p>587426</p>
+                                                    <p><?php if($row['legajo']==NULL)
+                                                    echo "No informado";
+                                                    else echo $row['legajo'];?></p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -133,7 +147,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                                     <label>Email</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <p>gonzalochaves@gmail.com</p>
+                                                    <p><?php if($row['email']==NULL)
+                                                    echo "No informado";
+                                                    else echo $row['email'];?></p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -141,15 +157,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                                     <label>Telefono</label>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <p>123 456 7890</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Profesión</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Ingeniero Industrial</p>
+                                                    <p><?php if($row['telefono']==NULL)
+                                                    echo "No informado";
+                                                    else echo $row['telefono'];?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -192,6 +202,8 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
         <!-- /#wrapper --> 
         </div>
 
+        <?php include 'vendor/php/includes/modal_dedicacion.php'; ?>
+
             <!-- Footer include -->            
             <?php include 'vendor/php/includes/footer.php'; ?>
 
@@ -205,6 +217,31 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 
         <!-- Scripts include-->
         <?php include 'vendor/php/includes/scripts.php';?>
+
+        <script>
+            function carga_ajax (x,div,url)
+            {
+                //alert(ruta);
+                $.post
+                (
+                url,
+                {x:x},
+                function (resp)
+                {
+                    $("#"+div+"").html (resp);
+                }
+                );
+            }
+
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    timeZone:'UTC -3',
+                    format:'DD/MM/YYYY HH:mm',
+                    icons: {time:'far fa-clock'}
+                    
+                });
+            });
+            </script>
 
     </body>
 </html>

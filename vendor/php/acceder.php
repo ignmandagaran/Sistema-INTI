@@ -86,7 +86,7 @@ $passPOST = md5($passPOST);
 if($userBD == $userPOSTMinusculas and $passPOST == $passwordBD){
 
 	session_start();
-	$_SESSION['usuario'] = $datos['usuario'];
+	$_SESSION['usuario'] = $datos['usuariominusculas'];
     $_SESSION['estado'] = 'Autenticado';
     
     header('Location: ../../principal.php');

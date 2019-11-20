@@ -26,6 +26,8 @@ WHERE cl.visible=1";
 //Query para cargar usuarios (visibles) en select
 $query_usuarios = "SELECT * FROM usuarios WHERE visible=1 ";
 
+$query_usuarios_perfil = "SELECT * FROM usuarios WHERE visible=1 AND usuariominusculas=";
+
 //Query para cargar tema (visibles) en select
 $query_temas = "SELECT * FROM temas WHERE visible=1 ";
 
@@ -46,6 +48,8 @@ $query_clientes = "SELECT c.id_cliente,c.nombre,c.cuit,c.actividad_principal,l.l
 
 //Query para cargar cuits (visibles) en select
 $query_cuit = "SELECT cuit, id_cliente FROM clientes WHERE visible=1 ";
+
+$query_dedicacion = "SELECT dedicacion FROM dedicaciones WHERE fecha=(SELECT MAX(fecha) from dedicaciones) AND usuario=";
 
 //Query para cargar modulos (visibles) en select
 $query_buscar_modulos= 'SELECT m.id_modulo, c.titulo_capacitacion, m.titulo_modulo, t.tema, l.localidad, m.fecha, m.hora_inicio, m.hora_fin, m.cantidad_asistentes, m.cantidad_empresas, u.nombre, m.observaciones FROM modulos m 
@@ -91,7 +95,7 @@ $query_buscar_capacitaciones= 'SELECT c.id_capacitacion, c.titulo_capacitacion, 
                                 INNER JOIN proyectos p ON p.id_proyecto=c.id_proyecto WHERE c.visible=1 ORDER BY c.fecha_inicio DESC';
 
 //Query para cargar usuarios (visibles) en select
-$query_buscar_usuarios= 'SELECT u.id_usuario,u.usuario,u.fecha_alta,u.id_rol,u.visible,u.nombre,r.rol 
+$query_buscar_usuarios= 'SELECT u.id_usuario,u.usuario,u.usuariominusculas,u.fecha_alta,u.id_rol,u.visible,u.nombre,r.rol 
                          FROM usuarios u INNER JOIN roles r ON u.id_rol = r.id_rol';
 
 
