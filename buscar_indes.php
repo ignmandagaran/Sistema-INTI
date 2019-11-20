@@ -18,7 +18,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 <html lang="en">
 
 <!-- Header include-->
-<?php $title = "Nuevo I+D"; 
+<?php $title = "Buscar I+D"; 
       include 'vendor/php/includes/header.php' ?>
 
 <body id="page-top">
@@ -43,7 +43,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
           <li class="breadcrumb-item">
             <a href="#">Panel de control</a>
           </li>
-          <li class="breadcrumb-item active">Nueva Produccion I+D</li>
+          <li class="breadcrumb-item active">Buscar Produccion I+D</li>
         </ol>
         <!-- Area Chart Example-->
         <div class="card mb-3">
@@ -51,22 +51,22 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             <i class="fas fa-fw fa-plus-circle"></i>
             Agregar nueva Producción de I+D</div>
           <div class="card-body">
-            <form>
+            <form method="get">
               <div class="form-row">
                 <div class="form-group col-md-4 col-4">
                     <label for="tema">Título</label>
                     <select class="form-control" id="selectema" name="titulo">
-                      <option>Selecione título...</option>
+                      <option value=''>Selecione título...</option>
                           <?php
                               foreach($enlace->query($query_titulo_indes) as $opciones): ?>
-                      <OPTION value="<?php echo $opciones['id_titulo_indes'] ?>"><?php echo $opciones['titulo_indes'] ?></OPTION>
+                      <OPTION value="<?php echo $opciones['id_indes'] ?>"><?php echo $opciones['titulo_indes'] ?></OPTION>
                           <?php endforeach ?> 
                     </select>
                 </div>
               <div class="form-group col-md-4 col-4">
                   <label for="tema">Seleccionar tipo</label>
                   <select class="form-control" id="selectema" name="tipo">
-                    <option>Selecione tipo...</option>
+                    <option value=''>Selecione tipo...</option>
                         <?php
                             foreach($enlace->query($query_tipo_indes) as $opciones): ?>
                     <OPTION value="<?php echo $opciones['id_tipo_indes'] ?>"><?php echo $opciones['tipo'] ?></OPTION>
@@ -124,11 +124,29 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     <tbody>
                       <tr>
                       <?php
-                    $result = mysqli_query($enlace,$query_buscar_indes) or die($enlace->error);
+                      // FILTROS PARA BUSCAR POR INDES
+                    $query_aConsultar = $query_buscar_indes;
+
+                    $titulo = $_GET["titulo"];
+                    if (!empty ($titulo)){
+                    $query_aConsultar.=" AND (id_indes=$titulo)";
+                    }
+
+                    $tipo = $_GET["tipo"];
+                    if (!empty ($tipo)){
+                    $query_aConsultar.=" AND (i.id_tipo_indes=$tipo)";
+                    }
+                    
+                    $tema = $_GET["tema"];
+                    if (!empty ($tema)){
+                    $query_aConsultar.=" AND (i.id_tema=$tema)";
+                    }
+                    
+                    $result = mysqli_query($enlace,$query_aConsultar) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){
                       $observacionesModal=$row['observaciones']; 
                       ?>
-                       <tr>
+                       <tr> 
                           <td><?php echo $row['id_indes'];?></td>
                           <td><?php echo $row['titulo_indes'];?></td>
                           <td><?php echo $row['tipo'];?></td>

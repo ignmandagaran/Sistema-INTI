@@ -53,7 +53,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             <i class="fas fa-fw fa-plus-circle"></i>
             Buscar capacitación por:</div>
           <div class="card-body">
-            <form action="vendor/php/filtros_capacitaciones.php" method="POST">
+            <form method="get">
               <div class="form-row">
                 <div class="form-group col-md-4 col-sm-4">
                       <label for="tema">Capacitación</label>
@@ -136,7 +136,25 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <tbody>
                   <tr>
                     <?php
-                    $result = mysqli_query($enlace,$query_buscar_capacitaciones) or die($enlace->error);
+                    // FILTROS PARA BUSCAR POR CAPACITACION
+                    $query_aConsultar = $query_buscar_capacitaciones;
+
+                    $titulo = $_GET["titulo"];
+                    if (!empty ($titulo)){
+                    $query_aConsultar.=" AND (id_capacitacion=$titulo)";
+                    }
+
+                    $tipo = $_GET["tipo"];
+                    if (!empty ($tipo)){
+                    $query_aConsultar.=" AND (c.id_tipo_capacitacion=$tipo)";
+                    }
+                    
+                    $proyecto = $_GET["proyecto"];
+                    if (!empty ($proyecto)){
+                    $query_aConsultar.=" AND (c.id_proyecto=$proyecto)";
+                    }
+
+                    $result = mysqli_query($enlace,$query_aConsultar) or die($enlace->error);
                     while ($row = $result->fetch_assoc()){
                       $observacionesModal=$row['observaciones'];?>
                        <tr>

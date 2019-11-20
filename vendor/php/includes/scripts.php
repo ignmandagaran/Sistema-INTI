@@ -29,4 +29,5 @@
 <script src="js/demo/chart-pie-demo.js"></script>
 
 <!-- Demo scripts for this page-->
-<script src="js/demo/datatables-demo.js"></script>
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>

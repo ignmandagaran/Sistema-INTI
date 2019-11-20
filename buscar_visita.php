@@ -53,11 +53,11 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             <i class="fas fa-fw fa-plus-circle"></i>
             Buscar Visita por:</div>
           <div class="card-body">
-            <form action="" method="POST">
+            <form method="get">
               <div class="form-row">
-              <div class="form-group col-md-4 col-sm-4">
+              <div class="form-group col-md-3">
                       <label for="tema">Cuit</label>
-                      <select class="form-control" id="select_id" name="cuit" required>
+                      <select class="form-control" id="select_id" name="cuit">
                       <option value=''>Seleccionar cuit..</option>
                         <?php 
                         //Ciclo donde se trae todos los cuit de clientes (visibles) de la base de datos. variable $enlace heredada de conexion.php
@@ -66,18 +66,29 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                        <?php endforeach ?>  
                       </select>
                 </div>
-                <div class="form-group col-md-4">
-                  <label for="selectTipo">Tipo</label>
+                <div class="form-group col-md-3">
+                  <label for="selectTipo">Tipo Visita</label>
                   <select class="form-control" name="tipo" id="selectTipo">
                     <option value="">Seleccionar tipo..</option>
                       <?php 
                          //Ciclo donde se trae todos los tipos de capacitacion (visibles) de la base de datos. variable $enlace heredada de conexion.php
                          foreach($enlace->query($query_tipo_visitas) AS $opciones): ?>
-                           <option value="<?php echo $opciones ['id_tipo_visita'] ?>"> <?php echo $opciones ['tipo_'] ?></option>
+                           <option value="<?php echo $opciones ['id_tipo_visita'] ?>"> <?php echo $opciones ['tipo_visita'] ?></option>
                       <?php endforeach ?>
                   </select>
                  </div>
-                 <div class="form-group col-md-4">
+                 <div class="form-group col-md-3">
+                  <label for="selectTipo">Tipo Asistencia</label>
+                  <select class="form-control" name="tipo2" id="selectTipo">
+                    <option value="">Seleccionar tipo..</option>
+                      <?php 
+                         //Ciclo donde se trae todos los tipos de capacitacion (visibles) de la base de datos. variable $enlace heredada de conexion.php
+                         foreach($enlace->query($query_tipo_asistencias) AS $opciones): ?>
+                           <option value="<?php echo $opciones ['id_tipo_asistencia'] ?>"> <?php echo $opciones ['tipo_asistencia'] ?></option>
+                      <?php endforeach ?>
+                  </select>
+                 </div>
+                 <div class="form-group col-md-3">
                     <label for="sel1">Proyecto</label>
                     <select class="form-control" name="proyecto" id="sel1">
                     <option value="" > Seleccionar proyecto</option>
@@ -140,7 +151,30 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <tbody>
                   <tr>
                     <?php
-                    $result = mysqli_query($enlace,$query_buscar_visitas) or die($enlace->error);
+                     // FILTROS PARA BUSCAR VISITA
+                     $query_aConsultar = $query_buscar_visitas;
+                    
+                     $cuit = $_GET["cuit"];
+                     if (!empty ($cuit)){
+                     $query_aConsultar.=" AND (v.id_cliente=$cuit)";
+                     }
+ 
+                     $tipo = $_GET["tipo"];
+                     if (!empty ($tipov)){
+                     $query_aConsultar.=" AND (v.id_tipo_visita=$tipo)";
+                     }
+
+                     $tipo2 = $_GET["tipo2"];
+                     if (!empty ($tipo2)){
+                     $query_aConsultar.=" AND (v.id_tipo_asistencia=$tipo2)";
+                     }
+ 
+                     $proyecto = $_GET["proyecto"];
+                     if (!empty ($proyecto)){
+                     $query_aConsultar.=" AND (v.id_proyecto=$proyecto)";
+                     }
+
+                    $result = mysqli_query($enlace,$query_aConsultar) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){
                       $observacionesModal=$row['observaciones'];
                       $usuariosModal=$row['nombre'];

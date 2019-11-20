@@ -53,7 +53,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             <i class="fas fa-fw fa-plus-circle"></i>
             Buscar módulos por:</div>
           <div class="card-body">
-          <form action="vendor/php/filtros_modulos.php" method="POST">
+          <form method="get">
               <div class="form-row">
                 <div class="form-group col-md-4 col-sm-4">
                       <label for="tema">Título</label>
@@ -61,14 +61,14 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       <option value=''>Seleccionar título..</option>
                         <?php 
                         //Ciclo donde se trae todos los títulos de modulos (visibles) de la base de datos. variable $enlace heredada de conexion.php
-                       foreach($enlace->query($query_titulo_modulo) AS $opciones): ?>
+                       foreach($enlace->query($query_titulo_modulos) AS $opciones): ?>
                        <option value="<?php echo $opciones ['id_modulo'] ?>"> <?php echo $opciones ['titulo_modulo'] ?></option>
                        <?php endforeach ?>  
                       </select>
                 </div>
                 <div class="form-group col-md-4 col-sm-4">
                       <label for="tema">Capacitación</label>
-                      <select class="form-control" id="select_id" name="capacitación">
+                      <select class="form-control" id="select_id" name="capacitacion">
                       <option value=''>Seleccionar título..</option>
                         <?php 
                         //Ciclo donde se trae todos los títulos de capacitación (visibles) de la base de datos. variable $enlace heredada de conexion.php
@@ -93,7 +93,6 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             </form>
           </div>
         </div>
-        
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
@@ -140,7 +139,25 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <tbody>
                   <tr>
                   <?php
-                    $result = mysqli_query($enlace,$query_buscar_modulos) or die($enlace->error);
+                  // FILTROS PARA BUSCAR POR MODULO
+                  $query_aConsultar = $query_buscar_modulos;
+
+                  $titulo = $_GET["titulo"];
+                  if (!empty ($titulo)){
+                  $query_aConsultar.=" AND (m.id_modulo=$titulo)";
+                  }
+
+                  $capacitacion = $_GET["capacitacion"];
+                  if (!empty ($capacitacion)){
+                  $query_aConsultar.=" AND (m.id_capacitacion=$capacitacion)";
+                  }
+                  
+                  $tema = $_GET["tema"];
+                  if (!empty ($tema)){
+                  $query_aConsultar.=" AND (m.id_tema=$tema)";
+                  }
+
+                    $result = mysqli_query($enlace,$query_aConsultar) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){ 
                       $observacionesModal=$row['observaciones'];
                       $usuariosModal=$row['nombre'];

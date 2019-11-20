@@ -54,7 +54,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             <i class="fas fa-fw fa-plus-circle"></i>
             Buscar proyecto por:</div>
           <div class="card-body">
-            <form>
+            <form method="get">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="sel1">Título</label>
@@ -69,7 +69,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 </div>
                     <div class="form-group col-md-6">
                   <label for="inputIdproyecto">Tipo</label>
-                  <select class="form-control" id="selecttipo" name="tipo" required>
+                  <select class="form-control" id="selecttipo" name="tipo">
                   <option value="" > Seleccionar tipo..</option>
                       <?php 
                          //Ciclo donde se trae todos los tipos de proyecto (visibles) de la base de datos. variable $enlace heredada de conexion.php
@@ -120,7 +120,20 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <tbody>
                   <tr>
                   <?php
-                    $result = mysqli_query($enlace,$query_buscar_proyectos) or die($enlace->error);
+                  // FILTROS PARA BUSCAR POR PROYECTO Y TITULO
+                  $query_aConsultar = $query_buscar_proyectos;
+
+                  $proyecto = $_GET["proyecto"];
+                  if (!empty ($proyecto)){
+                  $query_aConsultar.=" AND (id_proyecto=$proyecto)";
+                  }
+
+                  $tipo = $_GET["tipo"];
+                  if (!empty ($tipo)){
+                  $query_aConsultar.=" AND (tp.id_tipo_proyecto=$tipo)";
+                  }
+
+                    $result = mysqli_query($enlace,$query_aConsultar) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){ 
                       $observacionesModal=$row['observaciones'];?>
                        <tr>
@@ -139,7 +152,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                        </tr>
                     <?php }?>     
                   </tr>
-                </tbody>
+                 </tbody>
               </table>
             </div>
           </div>
