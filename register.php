@@ -54,6 +54,16 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
             </select>
           </div>
           <div class="form-row">
+              <div class="form-group col-md-3">
+                  <label for="inputDedicacion">Dedicacion</label>
+                  <input type="number" min="1" max="100" class="form-control" name="dedicacion" id="inputEmail4" placeholder="0 al 100" requerid>
+                </div>
+                <div class="form-group date form_datetime col-md-9 col-sm-9">
+                    <label class="control-label" for="datetimepicker-default">Fecha</label>
+                    <input type='text' class="form-control" id='datetimepicker1' name="fecha_dedicacion" placeholder="Ingresar fecha.."required />
+                </div>
+            </div>
+          <div class="form-row">
             <div class="form-group col-md-9  col-sm-9">
               <label for="exampleFormControlSelect1">Selección de región</label>
               <select class="form-control" id="exampleFormControlSelect1" disabled>
@@ -99,6 +109,14 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
         } else 
           $('#message').html('Las contraseñas no coinciden').css('color', 'red');
         });
+        $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    timeZone:'UTC -3',
+                    format:'DD/MM/YYYY HH:mm',
+                    icons: {time:'far fa-clock'}
+                    
+                });
+            });
     </script>
 
 </body>

@@ -77,7 +77,7 @@ foreach($query_usuario AS $row){
               </div>
               <div class="form-group date form_datetime col-md-9 col-sm-9">
                   <label class="control-label" for="datetimepicker-default">Fecha</label>
-                  <input type='text' class="form-control" id='datetimepicker1' name="fecha" placeholder="Ingresar fecha.."required />
+                  <input type='text' class="form-control" id='datetimepicker1' name="fecha_dedicacion" placeholder="Ingresar fecha.."required />
               </div>
           </div>
           <div class="form-row">

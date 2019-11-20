@@ -49,8 +49,6 @@ $query_clientes = "SELECT c.id_cliente,c.nombre,c.cuit,c.actividad_principal,l.l
 //Query para cargar cuits (visibles) en select
 $query_cuit = "SELECT cuit, id_cliente FROM clientes WHERE visible=1 ";
 
-$query_dedicacion = "SELECT dedicacion FROM dedicaciones WHERE fecha=(SELECT MAX(fecha) from dedicaciones) AND usuario=";
-
 //Query para cargar modulos (visibles) en select
 $query_buscar_modulos= 'SELECT m.id_modulo, c.titulo_capacitacion, m.titulo_modulo, t.tema, l.localidad, m.fecha, m.hora_inicio, m.hora_fin, m.cantidad_asistentes, m.cantidad_empresas, u.nombre, m.observaciones FROM modulos m 
                     INNER JOIN temas t ON t.id_tema=m.id_tema

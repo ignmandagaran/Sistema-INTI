@@ -65,8 +65,8 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                         <div class="col-md-6">
                                             <?php
                                             $usuario_logueado = $_SESSION['usuario'];
-
-                                            $result_dedicacion = mysqli_query($enlace,$query_dedicacion."'".$usuario_logueado."';") or die($enlace->error);
+                                            $query_dedicacion = "SELECT dedicacion FROM dedicaciones WHERE fecha=(SELECT MAX(fecha) from dedicaciones where usuario='$usuario_logueado') AND usuario='$usuario_logueado'";
+                                            $result_dedicacion = mysqli_query($enlace,$query_dedicacion) or die($enlace->error);
                                             if ($row = $result_dedicacion->fetch_assoc()){
                                                 $dedicacion_perfil = $row['dedicacion'];
                                             }
@@ -76,7 +76,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                             <div class="profile-head">
                                                 <h5>
                                                 <!-- Muestra el rol del usuario según su perfil -->
-                                                <?php if ($row['id_rol']==1){ echo 'Administrador';} else { echo 'Usuario';}?>
+                                                <?php if ($row['id_rol']==1){ echo 'Administrador';} else { echo 'Asesor';}?>
                                                 </h5>
                                                 <h6>
                                                     Nodo Pampa - Mar del plata
