@@ -20,7 +20,8 @@ $getUsuario= $_GET["usuario"];
 $query_usuario= mysqli_query($enlace, "SELECT u.usuariominusculas, u.nombre, u.id_rol, rol, d.dedicacion, d.fecha as fecha_dedicacion FROM usuarios u
                                         INNER JOIN roles r ON r.id_rol=u.id_rol
                                         INNER JOIN dedicaciones d ON d.usuario=u.usuariominusculas
-                                        WHERE d.fecha=(SELECT MAX(fecha) from dedicaciones) AND usuariominusculas='$getUsuario'");                                  
+                                        WHERE d.fecha=(SELECT MAX(fecha) from dedicaciones where usuario='$getUsuario') AND usuariominusculas='$getUsuario'");
+                             
 foreach($query_usuario AS $row){
     $usuario = $row['usuariominusculas'];
     $nombre = $row['nombre'];
