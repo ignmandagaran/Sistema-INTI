@@ -1,0 +1,12 @@
+[21-Nov-2019 23:56:59 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/sistemai/public_html/vendor/php/cambiar_estado.php:10) in /home/sistemai/public_html/vendor/php/cambiar_estado.php on line 14
+[22-Nov-2019 00:49:32 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/sistemai/public_html/vendor/php/add_modulo.php on line 24
+[22-Nov-2019 00:50:10 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/sistemai/public_html/vendor/php/add_modulo.php on line 24
+[22-Nov-2019 00:53:25 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/sistemai/public_html/vendor/php/add_modulo.php on line 24
+[22-Nov-2019 00:54:36 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/sistemai/public_html/vendor/php/add_modulo.php on line 24
+[22-Nov-2019 00:58:04 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/sistemai/public_html/vendor/php/add_modulo.php on line 24
+[22-Nov-2019 02:02:42 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/sistemai/public_html/vendor/php/add_modulo.php on line 24
+[22-Nov-2019 04:45:58 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/sistemai/public_html/vendor/php/add_clientes.php on line 12
+[22-Nov-2019 04:46:09 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/sistemai/public_html/vendor/php/add_clientes.php on line 12
+[22-Nov-2019 06:07:31 UTC] PHP Warning:  strip_tags() expects parameter 1 to be string, array given in /home/sistemai/public_html/vendor/php/add_indes.php on line 10
+[22-Nov-2019 06:09:58 UTC] PHP Warning:  strip_tags() expects parameter 1 to be string, array given in /home/sistemai/public_html/vendor/php/add_indes.php on line 10
+[22-Nov-2019 06:10:24 UTC] PHP Warning:  strip_tags() expects parameter 1 to be string, array given in /home/sistemai/public_html/vendor/php/add_indes.php on line 10

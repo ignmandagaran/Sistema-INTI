@@ -79,6 +79,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                   </select>
                 </div>
               </div>
+              <a href="new_proyecto.php"><p>Puede ver los proyectos AQUI</p></a>
               <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
           </div>

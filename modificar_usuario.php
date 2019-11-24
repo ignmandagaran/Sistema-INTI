@@ -55,12 +55,14 @@ foreach($query_usuario AS $row){
             </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputCuit"> Cambiar nombre</label> 
-              <input type="text" class="form-control" id="inputNombre" placeholder="Nuevo nombre/s" name="nombre" maxlength="25">
+              <label for="inputCuit"> Cambiar nombre</label>
+              <input type="text" class="form-control" id="inputNombre" placeholder="Nuevo nombre/s" name="nombre" maxlength="25" required>
+              <p>*Ingrese el nombre que quedará</p>
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword4">Cambiar apellido/s</label>
-              <input type="text" class="form-control" id="inputApellido" name="apellido" placeholder="Nuevo apellido/s" maxlength="20">
+              <input type="text" class="form-control" id="inputApellido" name="apellido" placeholder="Nuevo apellido/s" maxlength="20" required>
+              <p>*Ingrese el apellido que quedará</p>
             </div>
           </div>
           <div class="form-group">
@@ -74,11 +76,11 @@ foreach($query_usuario AS $row){
           <div class="form-row">
             <div class="form-group col-md-3">
                 <label for="inputDedicacion">Dedicacion</label>
-                <input type="number" min="1" max="100" class="form-control" name="dedicacion" id="inputEmail4" placeholder="0 al 100" requerid>
+                <input type="number" min="1" max="100" class="form-control" name="dedicacion" id="inputEmail4" placeholder="0 al 100">
               </div>
               <div class="form-group date form_datetime col-md-9 col-sm-9">
                   <label class="control-label" for="datetimepicker-default">Fecha</label>
-                  <input type='text' class="form-control" id='datetimepicker1' name="fecha_dedicacion" placeholder="Ingresar fecha.."required />
+                  <input type='text' class="form-control" id='datetimepicker1' name="fecha_dedicacion" placeholder="Ingresar fecha.." />
               </div>
           </div>
           <div class="form-row">

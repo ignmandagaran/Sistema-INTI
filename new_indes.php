@@ -87,12 +87,12 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
               <div class="form-row">
                 <div class="form-group col-md-12">
                   <label for="selectAseso">Asesores</label>
-                    <select multiple class="form-control" id="selectdoc" name="asesor" required>
+                    <select multiple class="form-control" id="selectdoc" name="asesor[]" required>
                       <option value="">Seleccionar asesores...</option>
                       <?php 
                             //Ciclo donde se trae todas los usuarios (visibles) de la base de datos. variable $enlace heredada de conexion.php
                              foreach($enlace->query($query_usuarios) AS $opciones): ?>
-                            <option value="<?php echo $opciones ['id_usuario'] ?>"> <?php echo $opciones ['usuario'] ?></option>
+                            <option value="<?php echo $opciones ['usuario'] ?>"> <?php echo $opciones ['usuario'] ?></option>
                             <?php endforeach ?>   
                     </select>
                     <a><p>Para seleccionar multiples asesores debe conbinar (click+ctrl)</p></a>
@@ -104,6 +104,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
               </div>
               <div class="form-group">
               </div>
+              <a href="buscar_indes.php"><p>Puede ver I+D AQUI</p></a>
               <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
 

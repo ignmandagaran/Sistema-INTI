@@ -100,6 +100,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     </select>
                 </div> 
               </div>
+              <a href="new_visitas.php"><p>Puede ingresar visitas AQUI</p></a>
               <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
           </div>
@@ -177,7 +178,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     $result = mysqli_query($enlace,$query_aConsultar) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){
                       $observacionesModal=$row['observaciones'];
-                      $usuariosModal=$row['nombre'];
+                      $usuariosModal=$row['usuarios'];
                       ?>
                        <tr>
                           <td><?php echo $row['id_visita'];?></td>

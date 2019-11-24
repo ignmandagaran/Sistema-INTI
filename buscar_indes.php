@@ -85,6 +85,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       </select>
                 </div>
               </div>
+              <a href="new_indes.php"><p>Puede agregar I+D AQUI</p></a>
               <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
           </div>  
@@ -104,6 +105,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <th>Tipo</th>
                           <th>Tema</th>
                           <th>Fecha</th>
+                          <th>Asesores</th>
                           <th>Observaciones</th>
                           <th>Modificar</th>
                           <th>Borrar</th>
@@ -116,6 +118,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <th>Tipo</th>
                           <th>Tema</th>
                           <th>Fecha</th>
+                          <th>Asesores</th>
                           <th>Observaciones</th>
                           <th>Modificar</th>
                           <th>Borrar</th>
@@ -144,7 +147,8 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     
                     $result = mysqli_query($enlace,$query_aConsultar) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){
-                      $observacionesModal=$row['observaciones']; 
+                      $observacionesModal=$row['observaciones'];
+                      $usuariosModal=$row['usuarios']; 
                       ?>
                        <tr> 
                           <td><?php echo $row['id_indes'];?></td>
@@ -152,6 +156,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <td><?php echo $row['tipo'];?></td>
                           <td><?php echo $row['tema'];?></td>
                           <td><?php echo $row['fecha'];?></td>
+                          <td><a href="javascript:void(0);" title="Ver asesores" data-toggle="modal" data-target="#modalUsuarios" onclick="carga_ajax('<?php echo $usuariosModal;?>','modalUsuarios','vendor/php/ajax/usuario_ajax.php');"><i class="material-icons">visibility</i></a></td>
                           <td><a href="javascript:void(0);" title="Ver observación" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php echo $observacionesModal;?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
                           <td><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
                           <td><a href="vendor/php/borrado_logico.php?indes= <?php echo $row['id_indes'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>

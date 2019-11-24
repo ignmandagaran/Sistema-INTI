@@ -160,7 +160,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     $result = mysqli_query($enlace,$query_aConsultar) or die($enlace->error);
                     while ($row= $result->fetch_assoc()){ 
                       $observacionesModal=$row['observaciones'];
-                      $usuariosModal=$row['nombre'];
+                      $usuariosModal=$row['usuarios'];
                       ?>
                        <tr>
                           <td><?php echo $row['id_modulo'];?></td>

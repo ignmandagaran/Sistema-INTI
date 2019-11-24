@@ -33,9 +33,9 @@ require 'vendor/php/sesiones.php';
           <div class="form-group">
             <div class="checkbox">
               <label>
-                <input type="checkbox" value="recordar">
+                <!--<input type="checkbox" value="recordar">
                 Recordar contraseña
-              </label>
+              </label>-->
             </div>
           </div>
           <button class="btn btn-primary btn-block" type="submit" id="" >Ingresar</button>
@@ -48,7 +48,7 @@ require 'vendor/php/sesiones.php';
     </div>
     <div class="container_logos">
       <img src="imagenes/logo_inti.svg" alt="logo inti"/>
-      <img src="imagenes/logo_iset.svg" alt="logo iset"/>
+      <!--<img src="imagenes/logo_iset.svg" alt="logo iset"/>-->
 	  </div>
   </div> 
 

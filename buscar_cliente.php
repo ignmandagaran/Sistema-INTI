@@ -91,7 +91,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           </div>
               </div>
               <div class="form-row">
-              <div class="form-group col-md-4 col-sm-4">
+              <div class="form-group col-md-6 col-sm-6">
                       <label for="tema">Actividad Principal</label>
                       <select class="form-control" id="select_actividad" name="actividad">
                       <option value=''>Seleccionar actividad principal...</option>
@@ -102,7 +102,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                        <?php endforeach ?>  
                       </select>
                 </div>
-                <div class="form-group col-md-4 col-sm-4">
+                <div class="form-group col-md-6 col-sm-6">
                       <label for="tema">Rubro</label>
                       <select class="form-control" id="select_rubro" name="rubro">
                       <option value=''>Seleccionar rubro...</option>
@@ -114,7 +114,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       </select>
                 </div>
               </div>
-              <a href="new_cliente.html"><p>Puede agregar un cliente AQUI</p></a>
+              <a href="new_cliente.php"><p>Puede agregar clientes AQUI</p></a>
               <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
           </div>

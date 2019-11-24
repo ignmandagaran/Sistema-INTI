@@ -51,7 +51,6 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                         Tu perfil de usuario</div>
                         <div class="card-body">
                             <div class="container emp-profile">
-                                <form method="post">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="profile-img">
@@ -78,9 +77,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                                 <!-- Muestra el rol del usuario según su perfil -->
                                                 <?php if ($row['id_rol']==1){ echo 'Administrador';} else { echo 'Asesor';}?>
                                                 </h5>
-                                                <h6>
-                                                    Nodo Pampa - Mar del plata
-                                                </h6>
+    
                                                 <?php
                                                 ?>
                                                 <p class="proile-rating">DEDICACION : <span><?php echo $dedicacion_perfil."%";?></span>        
@@ -89,27 +86,26 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                                     <li class="nav-item">
                                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Datos personales</a>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <!--<li class="nav-item">
                                                         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Datos laborales</a>
-                                                    </li>
+                                                    </li>-->
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar Perfil"/>
+                                        <button onclick="window.location.href='modificar_usuario.php?usuario=<?php echo $row['usuariominusculas'];?>';" type="submit" class="profile-edit-btn" name="btnAddMore">Editar Perfil</button>         
                                         </div>
-                                </form>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="profile-work">
+                                    <!--<div class="profile-work">
                                         <p>Registros relacionados</p>
                                         <a href="">Proyectos</a><br/>
                                         <a href="">Asistencias</a><br/>
                                         <a href="">Capacitaciones</a><br/>
                                         <a href="">Modulos</a><br/>
                                         <a href="">I+D publicados</a><br/>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="col-md-8">
                                     <div class="tab-content profile-tab" id="myTabContent">

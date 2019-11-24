@@ -10,8 +10,8 @@ if(null!==($capacitacion= $_GET['capacitacion'])){
 
 if(null!==($modulo= $_GET['modulo'])){
     $borrado= "UPDATE modulos SET visible=0 WHERE id_modulo='$modulo'";
-    mysqli_query($enlace, $borrado);
-    header("Location: ../../buscar_modulo.php");
+    mysqli_query($enlace, $borrado) or die($enlace-->error);
+    //header("Location: ../../buscar_modulo.php");
 }
 
 if(null!==($proyecto= $_GET['proyecto'])){

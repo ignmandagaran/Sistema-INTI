@@ -70,7 +70,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
               <div class="form-row">
               <div class="form-group col-md-6 col-sm-4">
                       <label for="tema">Tema</label>
-                      <select class="form-control" id="select_id" name="tema">
+                      <select class="form-control" id="select_id" name="tema" required>
                       <option value=''>Seleccionar tema..</option>
                         <?php 
                         //Ciclo donde se trae todos los temas (visibles) de la base de datos. variable $enlace heredada de conexion.php
@@ -108,28 +108,28 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="docentes">Docentes</label>
-                    <select multiple class="form-control" id="selectdoc" name="docente">
+                    <select multiple class="form-control" id="selectdoc" name="docente[]" required>
                       <option value="">Seleccionar docentes...</option>
                       <?php 
                             //Ciclo donde se trae todas los usuarios (visibles) de la base de datos. variable $enlace heredada de conexion.php
                              foreach($enlace->query($query_usuarios) AS $opciones): ?>
-                            <option value="<?php echo $opciones ['id_usuario'] ?>"> <?php echo $opciones ['usuario'] ?></option>
+                            <option value="<?php echo $opciones ['usuario'] ?>"> <?php echo $opciones ['usuario'] ?></option>
                             <?php endforeach ?>   
                     </select>
                     <a><p>Para seleccionar multiples docentes debe conbinar (click+ctrl)</p></a>
                 </div>
                   <div class="form-group col-md-4">
                     <label for="inputTitulo">Cantidad de asistentes</label>
-                    <input type="number" class="form-control" name="asistentes" placeholder="ingrese cantidad..." required>
+                    <input type="number" class="form-control" name="asistentes"  placeholder="ingrese cantidad..." min="1" max="1000" required>
                   </div> 
                   <div class="form-group col-md-4">
                     <label>Cantidad de empresas</label>
-                    <input type="number" class="form-control" name="empresas" placeholder="ingrese cantidad..." required>
+                    <input type="number" class="form-control" name="empresas" placeholder="ingrese cantidad..." min="1" max="100" required>
                   </div>
               </div>              
               <div class="form-group">
                 <label for="inputobser">Observaciones</label>
-                <textarea class="form-control" id="observaciones" name="observaciones" rows="3" placeholder="Ingresar observaciones..." required></textarea>
+                <textarea class="form-control" id="observaciones" name="observaciones" rows="3" placeholder="Ingresar observaciones..."  required></textarea>
               </div>
               <div class="form-group">
               </div>

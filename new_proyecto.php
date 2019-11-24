@@ -77,7 +77,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
               </div>
               <div class="form-group">
               </div>
-              <a href="buscar_proyecto.html"><p>Puede ver los proyectos AQUI</p></a>
+              <a href="buscar_proyecto.php"><p>Puede ver los proyectos AQUI</p></a>
               <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
           </div>

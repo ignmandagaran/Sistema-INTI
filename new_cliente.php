@@ -17,6 +17,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 <!DOCTYPE html>
 <html lang="en">
 
+
 <!-- Header include-->
 <?php $title = "Nuevo Cliente"; 
       include 'vendor/php/includes/header.php' ?>
@@ -53,7 +54,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <div class="form-row">
                   <div class="form-group col-md-1 col-sm-3">
                     <label for="inputCuit">CUIT</label>
-                    <input type="number" class="form-control" id="inputEmail4" placeholder="" name="cuit1" min="1" max="99" minlength="2" maxlength="2" required>
+                    <input type="number" class="form-control" id="inputEmail4" placeholder="" name="cuit1" min="10" max="99" minlength="2" maxlength="2" required>
                   </div>
                   <div class="form-group col-md-4 col-sm-6">
                     <label for="inputCuit" >&nbsp;</label>
@@ -88,7 +89,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="inputAddress">Localidad</label>
-                    <select class="form-control" id="localidad-select">
+                    <select class="form-control" id="localidad-select" name='localidad' required>
                     </select>
                   </div>
 
@@ -104,11 +105,12 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 <div class="form-row">
                     <div class="form-group col-sm-12">
                         <label for="exampleFormControlTextarea1">Describir actividad principal:</label>
-                        <textarea class="form-control" id="" rows="3" maxlength="200" name="descripcion"></textarea>
+                        <textarea class="form-control" id="" rows="3" maxlength="200" name="descripcion" required></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                 </div>
+                <a href="buscar_cliente.php"><p>Puede ver los clientes AQUI</p></a>
                 <button type="submit" class="btn btn-primary">Guardar</button>
               </form>
             </div>

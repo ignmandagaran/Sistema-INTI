@@ -89,6 +89,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     </select>
                 </div> 
               </div>
+              <a href="new_capacitacion.php"><p>Puede ver las capacitaciones AQUI</p></a>
               <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
           </div>

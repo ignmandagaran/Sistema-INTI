@@ -78,15 +78,14 @@ $datos = mysqli_fetch_array($resultado);
 //y de la contraseña de la base de datos
 $userBD = $datos['usuariominusculas'];
 $passwordBD = $datos['clave'];
-
+$visible= $datos['visible'];
 //Encriptamos en MD5
 $passPOST = md5($passPOST);
 
 //Comprobamos si los datos son correctos
-if($userBD == $userPOSTMinusculas and $passPOST == $passwordBD){
-
-	session_start();
-	$_SESSION['usuario'] = $datos['usuariominusculas'];
+if($userBD == $userPOSTMinusculas and $passPOST == $passwordBD and $visible==1){
+    session_start();
+	$_SESSION['usuario'] = $datos['usuario'];
     $_SESSION['estado'] = 'Autenticado';
     
     header('Location: ../../principal.php');
@@ -95,6 +94,8 @@ if($userBD == $userPOSTMinusculas and $passPOST == $passwordBD){
 
 //Si los datos no son correctos, o están vacíos, muestra un error
 //Además, hay un script que vacía los campos con la clase "acceso" (formulario)
+}else if ($visible==0){
+    die ("<script>alert(\"Esta suspendida su cuenta. Por favor comuniquese con el administrador\");window.location='../../login.php';</script>");
 } else if ( $userBD != $userPOSTMinusculas || $userPOST == "" || $passPOST == "" || !password_verify($passPOST, $passwordBD) ) {
 	die ("<script>alert(\"El usuario o la contraseña son incorrectos.\");window.location='../../login.php';</script>");
 } else {

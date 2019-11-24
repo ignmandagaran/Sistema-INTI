@@ -71,7 +71,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                             <th>Rol</th>
                             <th>Estado</th>
                             <th>Modificar</th>
-                            <th>Eliminar</th>
+                            <th>Cambiar estado</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,28 +87,15 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <?php    
                           if ($row['visible']){ ?> 
                              <td><span class="status text-success">&bull;</span> Activo </td>
-                             <?php } else {?>
+                             <?php }else{?>
                              <td><span class="status text-danger">&bull;</span> Suspendido</td> 
                              <?php }?>
-                             <td><a href="modificar_usuario.php?usuario=<?php echo $row['usuariominusculas'];?>"class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
-                             <td><a href="vendor/php/borrado_logico.php?usuario= <?php echo $row['id_usuario'];?>" onclick= "return confirmation()" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
+                             <td><a href="modificar_usuario.php?usuario=<?php echo $row['usuariominusculas'];?>"class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                             <td><a href="vendor/php/cambiar_estado.php?usuario= <?php echo $row['id_usuario'];?>" onclick= "return confirmation()" class="delete" title="Cambiar estado" data-toggle="tooltip"><i class="material-icons">check_circle  </i></a></td>
                        </tr>
                          <?php }?> 
                   </tbody>
                 </table>
-                <!-- NO BORRAR - PAGINACION A IMPLEMENTAR - NO BORRAR -->
-                <div class="clearfix">
-                  <div class="hint-text">Mostrado <b>X</b> de <b>XX</b> entradas</div>
-                  <ul class="pagination">
-                      <li class="page-item disabled"><a href="#">Previo</a></li>
-                      <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                      <li class="page-item"><a href="#" class="page-link">2</a></li>
-                      <li class="page-item"><a href="#" class="page-link">3</a></li>
-                      <li class="page-item"><a href="#" class="page-link">4</a></li>
-                      <li class="page-item"><a href="#" class="page-link">5</a></li>
-                      <li class="page-item"><a href="#" class="page-link">Siguiente</a></li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>

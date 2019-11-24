@@ -9,7 +9,7 @@ include ("conexion.php");
     $cuit3= mysqli_real_escape_string($enlace,(strip_tags($_POST["cuit3"],ENT_QUOTES)));
     $cuit= $cuit1.$cuit2.$cuit3;
     $nombre= mysqli_real_escape_string($enlace,(strip_tags($_POST["nombre"],ENT_QUOTES)));
-    $localidad= mysqli_real_escape_string($enlace,(strip_tags($_POST["localidad"],ENT_QUOTES)));
+    $localidad= ($_POST["localidad"]);
     $rubro= mysqli_real_escape_string($enlace,(strip_tags($_POST["rubro"],ENT_QUOTES)));
     $descripcion= mysqli_real_escape_string($enlace,(strip_tags($_POST["descripcion"],ENT_QUOTES)));
     $visible  = 1;

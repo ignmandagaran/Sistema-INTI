@@ -110,12 +110,12 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 </div>
                 <div class="form-group col-md-12">
                   <label for="selectAseso">Asesores</label>
-                    <select multiple class="form-control" id="selectdoc" name="asesor" required>
+                    <select multiple class="form-control" id="selectdoc" name="asesor[]" required>
                       <option value="">Seleccionar asesores...</option>
                       <?php 
                             //Ciclo donde se trae todas los usuarios (visibles) de la base de datos. variable $enlace heredada de conexion.php
                              foreach($enlace->query($query_usuarios) AS $opciones): ?>
-                            <option value="<?php echo $opciones ['id_usuario'] ?>"> <?php echo $opciones ['nombre'] ?></option>
+                            <option value="<?php echo $opciones ['usuario'] ?>"> <?php echo $opciones ['usuario'] ?></option>
                             <?php endforeach ?>   
                     </select>
                     <a><p>Para seleccionar multiples asesores debe conbinar (click+ctrl)</p></a>
@@ -125,6 +125,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                   <textarea class="form-control" id="exampleFormControlTextarea1" name="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>
                 </div>
                 <div class="form-group">
+                <a href="buscar_visitas.php"><p>Puede ver visitas AQUI</p></a>
                 <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
               </div>
