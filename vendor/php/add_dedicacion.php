@@ -8,6 +8,11 @@ include ("conexion.php");
     $dedicacion= mysqli_real_escape_string($enlace,(strip_tags($_POST["dedicacion"],ENT_QUOTES)));
     $usuario= mysqli_real_escape_string($enlace,(strip_tags($_POST["usuario"],ENT_QUOTES)));
     $visible  = 1;
+
+    if($dedicacion<0){
+        print "<script>alert(\"No se pudo guardar el registro. La dedicacíon no puede ser menor a 0.\");window.location='../../perfil.php';</script>"
+    }
+
     $query = "INSERT INTO `dedicaciones` (`fecha`, `dedicacion`, `usuario`, `visible`)
               VALUES('$fecha', '$dedicacion','$usuario','$visible')";
 

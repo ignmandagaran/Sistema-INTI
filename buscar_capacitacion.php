@@ -110,12 +110,12 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       <th>Proyecto</th>
                       <th>Inicio</th>
                       <th>Fin</th>
-                      <th>Empresas</th>
-                      <th>Asistentes</th>
-                      <th>Observacion</th>
-                      <th>Finalizar</th>
-                      <th>Modificar</th>
-                      <th>Borrar</th>
+                      <th class="text-center">Empresas</th>
+                      <th class="text-center">Asistentes</th>
+                      <th class="text-center">Observacion</th>
+                      <th class="text-center">Finalizar</th>
+                      <th class="text-center">Modificar</th>
+                      <th class="text-center">Borrar</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -126,12 +126,12 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                       <th>Proyecto</th>
                       <th>Inicio</th>
                       <th>Fin</th>
-                      <th>Empresas</th>
-                      <th>Asistentes</th>
-                      <th>Observacion</th>
-                      <th>Finalizar</th>
-                      <th>Modificar</th>
-                      <th>Borrar</th>
+                      <th class="text-center">Empresas</th>
+                      <th class="text-center">Asistentes</th>
+                      <th class="text-center">Observacion</th>
+                      <th class="text-center">Finalizar</th>
+                      <th class="text-center">Modificar</th>
+                      <th class="text-center">Borrar</th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -168,12 +168,12 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                       echo $row['fecha_fin'];
                                     else
                                       echo "Sin finalizar"?></td>
-                          <td><?php echo $row['asistentes'];?></td>
-                          <td><?php echo $row['empresas'];?></td>
-                          <td><a href="javascript:void(0);" title="Ver Observación" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php echo $observacionesModal;?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
-                          <td><a href="vendor/php/finalizar.php?capacitacion= <?php echo $row['id_capacitacion'];?>" onclick= "return confirmation()" class="delete" title="Finalizar" data-toggle="tooltip"><i class="material-icons">check_circle</i></a></td>
-                          <td><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
-                          <td><a href="vendor/php/borrado_logico.php?capacitacion= <?php echo $row['id_capacitacion'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
+                          <td class="text-center"><?php echo $row['empresas'];?></td>
+                          <td class="text-center"><?php echo $row['asistentes'];?></td>
+                          <td class="text-center"><a href="javascript:void(0);" title="Ver Observación" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php if($observacionesModal!=NULL){ echo $observacionesModal;}else{echo 'No hay observación.';};?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td class="text-center"><a href="vendor/php/finalizar.php?capacitacion= <?php echo $row['id_capacitacion'];?>" onclick= "return finalizarMsg()" class="delete" title="Finalizar" data-toggle="tooltip"><i class="material-icons">check_circle</i></a></td>
+                          <td class="text-center"><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                          <td class="text-center"><a href="vendor/php/borrado_logico.php?capacitacion= <?php echo $row['id_capacitacion'];?>" onclick= "return borrarMsg()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
                        </tr>
                     <?php }?>  
                      </tr>
@@ -231,16 +231,28 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 
     <!--Script Confirmacion-->
     <script type="text/javascript">
-     function confirmation() 
+     function borrarMsg() 
      {
-        if(confirm("Desea seguir?"))
-	{
-	   return true;
-	}
-	else
-	{
-	   return false;
-	}
+        if(confirm("Se va a borrar el registro, ¿está seguro?"))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+     }
+
+     function finalizarMsg() 
+     {
+        if(confirm("Se va a finalizar la capacitación, ¿está seguro?"))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
      }
     </script>
 

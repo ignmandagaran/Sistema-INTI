@@ -14,9 +14,17 @@ include ("conexion.php");
     $hora2= ($_POST ["hora2"]);
     $docentes= ($_POST["docente"]);
     $asistentes= mysqli_real_escape_string($enlace,(strip_tags($_POST["asistentes"],ENT_QUOTES)));
-    $empresas= mysqli_real_escape_string($enlace,(strip_tags($_POST["asistentes"],ENT_QUOTES)));
+    $empresas= mysqli_real_escape_string($enlace,(strip_tags($_POST["empresas"],ENT_QUOTES)));
     $observaciones= mysqli_real_escape_string($enlace,(strip_tags($_POST["observaciones"],ENT_QUOTES)));
-    $visible  = 1;  
+    $visible  = 1;
+    
+    if($asistentes<1){
+      print "<script>alert(\"No se pudo guardar el registro. Debe haber al menos 1 asistente.\");window.location='../../new_modulo.php';</script>";
+    }
+
+    if($empresas<0){
+      print "<script>alert(\"No se pudo guardar el registro. El número de empresas no puede ser negativo.\");window.location='../../new_modulo.php';</script>";
+    }
     
     for($i=0; $i<COUNT($docentes); $i++){
       $docentes[$i];

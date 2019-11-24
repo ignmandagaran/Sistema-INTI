@@ -91,7 +91,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                              <td><span class="status text-danger">&bull;</span> Suspendido</td> 
                              <?php }?>
                              <td><a href="modificar_usuario.php?usuario=<?php echo $row['usuariominusculas'];?>"class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
-                             <td><a href="vendor/php/cambiar_estado.php?usuario= <?php echo $row['id_usuario'];?>" onclick= "return confirmation()" class="delete" title="Cambiar estado" data-toggle="tooltip"><i class="material-icons">check_circle  </i></a></td>
+                             <td><a href="vendor/php/cambiar_estado.php?usuario= <?php echo $row['id_usuario'];?>" onclick= "return confirmation()" class="delete" title="Cambiar estado" data-toggle="tooltip"><i class="material-icons">check_circle</i></a></td>
                        </tr>
                          <?php }?> 
                   </tbody>
@@ -129,7 +129,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
  <script type="text/javascript">
           function confirmation() 
           {
-              if(confirm("Desea seguir?"))
+              if(confirm("Esta por cambiar el estado del usuario, ¿está seguro?"))
         {
           return true;
         }

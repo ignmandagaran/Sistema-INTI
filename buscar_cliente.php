@@ -135,8 +135,8 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     <th>Localidad</th>
                     <th>Rubro</th>
                     <th>Actividad</th>
-                    <th>Modificar</th>
-                    <th>Borrar</th>
+                    <th class="text-center">Modificar</th>
+                    <th class="text-center">Borrar</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -147,8 +147,8 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                     <th>Localidad</th>
                     <th>Rubro</th>
                     <th>Actividad</th>
-                    <th>Modificar</th>
-                    <th>Borrar</th>
+                    <th class="text-center">Modificar</th>
+                    <th class="text-center">Borrar</th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -192,8 +192,8 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <td><?php echo $row['localidad'];?></td>
                           <td><?php echo $row['rubro'];?></td>
                           <td><?php echo $row['actividad_principal'];?></td>
-                          <td><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
-                          <td><a href="vendor/php/borrado_logico.php?cliente= <?php echo $row['id_cliente'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
+                          <td class="text-center"><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                          <td class="text-center"><a href="vendor/php/borrado_logico.php?cliente= <?php echo $row['id_cliente'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
                        </tr>
                     <?php }?>  
                   </tr>
@@ -230,14 +230,14 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
     <script type="text/javascript">
      function confirmation() 
      {
-        if(confirm("Desea seguir?"))
-	{
-	   return true;
-	}
-	else
-	{
-	   return false;
-	}
+        if(confirm("Se va a borrar el registro, ¿está seguro?"))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
      }
     </script>
 

@@ -105,10 +105,10 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <th>Tipo</th>
                           <th>Tema</th>
                           <th>Fecha</th>
-                          <th>Asesores</th>
-                          <th>Observaciones</th>
-                          <th>Modificar</th>
-                          <th>Borrar</th>
+                          <th class="text-center">Asesores</th>
+                          <th class="text-center">Observaciones</th>
+                          <th class="text-center">Modificar</th>
+                          <th class="text-center">Borrar</th>
                       </tr>
                     </thead>
                     <tfoot>
@@ -118,10 +118,10 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <th>Tipo</th>
                           <th>Tema</th>
                           <th>Fecha</th>
-                          <th>Asesores</th>
-                          <th>Observaciones</th>
-                          <th>Modificar</th>
-                          <th>Borrar</th>
+                          <th class="text-center">Asesores</th>
+                          <th class="text-center">Observaciones</th>
+                          <th class="text-center">Modificar</th>
+                          <th class="text-center">Borrar</th>
                       </tr>
                     </tfoot>
                     <tbody>
@@ -156,10 +156,10 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                           <td><?php echo $row['tipo'];?></td>
                           <td><?php echo $row['tema'];?></td>
                           <td><?php echo $row['fecha'];?></td>
-                          <td><a href="javascript:void(0);" title="Ver asesores" data-toggle="modal" data-target="#modalUsuarios" onclick="carga_ajax('<?php echo $usuariosModal;?>','modalUsuarios','vendor/php/ajax/usuario_ajax.php');"><i class="material-icons">visibility</i></a></td>
-                          <td><a href="javascript:void(0);" title="Ver observación" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php echo $observacionesModal;?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
-                          <td><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
-                          <td><a href="vendor/php/borrado_logico.php?indes= <?php echo $row['id_indes'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
+                          <td class="text-center"><a href="javascript:void(0);" title="Ver asesores" data-toggle="modal" data-target="#modalUsuarios" onclick="carga_ajax('<?php echo $usuariosModal;?>','modalUsuarios','vendor/php/ajax/usuario_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td class="text-center"><a href="javascript:void(0);" title="Ver observación" data-toggle="modal" data-target="#modalObservaciones" onclick="carga_ajax('<?php if($observacionesModal!=NULL){ echo $observacionesModal;}else{echo 'No hay observación.';}?>','modalObservaciones','vendor/php/ajax/observacion_ajax.php');"><i class="material-icons">visibility</i></a></td>
+                          <td class="text-center"><a href="#" class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                          <td class="text-center"><a href="vendor/php/borrado_logico.php?indes= <?php echo $row['id_indes'];?>" onclick= "return confirmation()" class="delete" title="Borrar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a></td>
                        </tr>
                     <?php }?>  
                       </tr>
@@ -216,14 +216,14 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
       <script type="text/javascript">
           function confirmation() 
           {
-              if(confirm("Desea seguir?"))
-        {
-          return true;
-        }
-        else
-        {
-          return false;
-        }
+              if(confirm("Se va a borrar el registro, ¿está seguro?"))
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
           }
           </script>
 

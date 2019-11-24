@@ -87,7 +87,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
               <div class="form-row">
                 <div class="form-group col-md-12">
                   <label for="inputAddress2">Observaciones</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1"  name="observaciones" rows="3" placeholder="Ingresar observaciones" required></textarea>
+                  <textarea class="form-control" id="exampleFormControlTextarea1"  name="observaciones" rows="3" placeholder="Ingresar observaciones"></textarea>
                 </div>
               </div>
               <a href="buscar_capacitacion.php"><p>Puede ver las capacitaciones AQUI</p></a>

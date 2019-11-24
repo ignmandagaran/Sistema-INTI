@@ -58,7 +58,6 @@
         <?php echo $mostrar['usuario'];?>
         <i class="fas fa-user-circle fa-fw" ></i>
         </a>
-        
         <?php
         }
         ?>

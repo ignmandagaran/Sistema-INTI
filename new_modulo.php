@@ -68,7 +68,7 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                 </div>
               </div>
               <div class="form-row">
-              <div class="form-group col-md-6 col-sm-4">
+              <div class="form-group col-md-4 col-sm-4">
                       <label for="tema">Tema</label>
                       <select class="form-control" id="select_id" name="tema" required>
                       <option value=''>Seleccionar tema..</option>
@@ -79,17 +79,25 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                        <?php endforeach ?>  
                       </select>
                 </div>
-                      <div class="form-group col-md-6 col-sm-4">
-                          <label for="tema">Localidad </label>
-                          <select class="form-control" id="select_loc" name="localidad" required>
-                            <option value="">Seleccione localidad...</option>
-                            <?php 
-                            //Ciclo donde se trae todas las localidades (visibles) de la base de datos. variable $enlace heredada de conexion.php
-                             foreach($enlace->query($query_localidades) AS $opciones): ?>
-                            <option value="<?php echo $opciones ['id_localidad'] ?>"> <?php echo $opciones ['localidad'] ?></option>
-                            <?php endforeach ?>   
-                          </select>
-                          </div>
+                <div class="form-group col-md-4 col-sm-4">
+                  <label for="inputAddress">Provincia</label>
+                  <select class="form-control" id="provincia-select" required>
+                    <option disabled selected>Seleccione la provincia...</option>
+                    <?php 
+
+                    //Ciclo donde se trae todas las provincias de la base de datos. variable $enlace heredada de conexion.php
+                    foreach ($enlace->query($query_provincias) as $row){
+                      echo '<option value="'.$row[id_provincia].'">'. $row[provincia].'</option>';
+
+                    }
+                    ?>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-sm-4">
+                  <label for="inputAddress">Localidad</label>
+                  <select class="form-control" id="localidad-select" name='localidad' required>
+                  </select>
+                </div>
               </div>
               <div class="form-row">
                   <div class="form-group date form_datetime col-md-4">
@@ -124,12 +132,12 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                   </div> 
                   <div class="form-group col-md-4">
                     <label>Cantidad de empresas</label>
-                    <input type="number" class="form-control" name="empresas" placeholder="ingrese cantidad..." min="1" max="100" required>
+                    <input type="number" class="form-control" name="empresas" placeholder="ingrese cantidad..." min="0" max="100" required>
                   </div>
               </div>              
               <div class="form-group">
                 <label for="inputobser">Observaciones</label>
-                <textarea class="form-control" id="observaciones" name="observaciones" rows="3" placeholder="Ingresar observaciones..."  required></textarea>
+                <textarea class="form-control" id="observaciones" name="observaciones" rows="3" placeholder="Ingresar observaciones..."></textarea>
               </div>
               <div class="form-group">
               </div>
