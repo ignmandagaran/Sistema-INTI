@@ -51,20 +51,21 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                         Tu perfil de usuario</div>
                         <div class="card-body">
                             <div class="container emp-profile">
+                                <form method="post">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="profile-img">
                                                 <img src="imagenes/perfil_img.png" alt="Foto del perfil"/>
-                                                <div class="file btn btn-lg btn-primary">
-                                                    Cambiar foto
+                                                <!--<div class="file btn btn-lg btn-primary">
+                                                
                                                     <input type="file" name="file"/>
-                                                </div>
+                                                </div>-->
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <?php
                                             $usuario_logueado = $_SESSION['usuario'];
-                                            $query_dedicacion = "SELECT dedicacion FROM dedicaciones WHERE fecha=(SELECT MAX(fecha) from dedicaciones where usuario='$usuario_logueado') AND usuario='$usuario_logueado'";
+                                            $query_dedicacion = "SELECT dedicacion FROM dedicaciones WHERE mes=(SELECT MAX(mes) from dedicaciones where usuario='$usuario_logueado') AND usuario='$usuario_logueado'";
                                             $result_dedicacion = mysqli_query($enlace,$query_dedicacion) or die($enlace->error);
                                             if ($row = $result_dedicacion->fetch_assoc()){
                                                 $dedicacion_perfil = $row['dedicacion'];
@@ -93,8 +94,9 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                        <button onclick="window.location.href='modificar_usuario.php?usuario=<?php echo $row['usuariominusculas'];?>';" type="submit" class="profile-edit-btn" name="btnAddMore">Editar Perfil</button>         
+                                        <button onclick="window.location.href='modificar_usuario.php?usuario=<?php echo $row['usuariominusculas'];?>';" type="submit" class="profile-edit-btn" name="btnAddMore">Editar Perfil</button>
                                         </div>
+                                </form>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">

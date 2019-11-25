@@ -70,28 +70,38 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
                             <th>Alta del usuario</th>
                             <th>Rol</th>
                             <th>Estado</th>
-                            <th>Modificar</th>
-                            <th>Cambiar estado</th>
+                            <th class="text-center">Modificar</th>
+                            <th class="text-center">Dedicacion</th>
+                            <th class="text-center">Cambiar estado</th>
+                            <th class="text-center">Cambiar rol</th>
                         </tr>
                     </thead>
                     <tbody>
                     <tr>
                     <?php
                     $result = mysqli_query($enlace,$query_buscar_usuarios) or die($enlace->error);
-                    while ($row= $result->fetch_assoc()){ ;?>
+                    while ($row= $result->fetch_assoc()){ 
+                      ?>
                        <tr>
                           <td><?php echo $row['id_usuario'];?></td>
                           <td><img src="imagenes/user.png" class="avatar" alt="Avatar"><?php echo ucfirst($row['usuario']);?></td>
                           <td><?php echo $row['fecha_alta'];?></td>
-                          <td><?php echo ucfirst($row['rol']);?></td>
+                          <?php
+                             if ($row['rol']=='administrador'){ ?> 
+                             <td><span class="status text-success">&bull;</span> Administrador </td>
+                             <?php }else{?>
+                             <td><span class="status text-danger">&bull;</span> Usuario</td> 
+                             <?php }?>
                           <?php    
                           if ($row['visible']){ ?> 
                              <td><span class="status text-success">&bull;</span> Activo </td>
                              <?php }else{?>
                              <td><span class="status text-danger">&bull;</span> Suspendido</td> 
                              <?php }?>
-                             <td><a href="modificar_usuario.php?usuario=<?php echo $row['usuariominusculas'];?>"class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
-                             <td><a href="vendor/php/cambiar_estado.php?usuario= <?php echo $row['id_usuario'];?>" onclick= "return confirmation()" class="delete" title="Cambiar estado" data-toggle="tooltip"><i class="material-icons">check_circle</i></a></td>
+                             <td class="text-center"><a href="modificar_usuario.php?usuario=<?php echo $row['usuariominusculas'];?>"class="settings" title="Modificar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a></td>
+                             <td class="text-center"><a href="javascript:void(0);" class="settings" title="Modificar" data-toggle="modal" data-target="#modalDedicacion" onclick="carga_ajax('<?php echo ucfirst($row['usuario']);?>','modalDedicacion','vendor/php/ajax/dedicacion_ajax.php');"><i class="material-icons">&#xE8B8;</i></a></td>
+                             <td class="text-center"><a href="vendor/php/cambiar_estado.php?usuario= <?php echo $row['id_usuario'];?>" onclick= "return confirmation()" class="delete" title="Cambiar estado" data-toggle="tooltip"><i class="material-icons">check_circle  </i></a></td>
+                             <td class="text-center"><a href="vendor/php/cambiar_rol.php?usuario= <?php echo $row['id_usuario'];?>" onclick= "return confirmation()" class="delete" title="Cambiar estado" data-toggle="tooltip"><i class="material-icons">check_circle  </i></a></td>
                        </tr>
                          <?php }?> 
                   </tbody>
@@ -119,6 +129,8 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
     <i class="fas fa-angle-up"></i>
   </a>
 
+  <?php include 'vendor/php/includes/modal_dedicacion.php'; ?>
+
   <!-- Logout Modal include-->
   <?php include 'vendor/php/includes/logout.php'?>
 
@@ -127,9 +139,23 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 
  <!--Script Confirmacion-->
  <script type="text/javascript">
+
+      function carga_ajax (x,div,url)
+      {
+        //alert(ruta);
+        $.post
+        (
+          url,
+          {x:x},
+          function (resp)
+          {
+            $("#"+div+"").html (resp);
+          }
+        );
+      }
           function confirmation() 
           {
-              if(confirm("Esta por cambiar el estado del usuario, ¿está seguro?"))
+              if(confirm("Esta por modificar el usuario, ¿está seguro?"))
         {
           return true;
         }
@@ -138,6 +164,14 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
           return false;
         }
           }
+          $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    timeZone:'UTC -3',
+                    format:'MM/YYYY',
+                    icons: {time:'far fa-clock'}
+                    
+                });
+            });
  </script>
 
 </body>

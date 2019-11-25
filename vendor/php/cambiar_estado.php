@@ -7,7 +7,7 @@ if(null!==($usuario= $_GET['usuario'])){
     foreach($getVisible AS $row){
         $visible = $row['visible'];
       }
-      
+    echo $visible;
     if($visible==1){    
         $borrado= "UPDATE usuarios SET visible=0 WHERE id_usuario='$usuario'";
         mysqli_query($enlace, $borrado);

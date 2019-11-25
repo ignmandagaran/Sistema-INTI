@@ -11,7 +11,6 @@
       <div class="modal-body">
         <form action="vendor/php/add_dedicacion.php" method="POST" >
             <div class="form-row">
-                <input type="hidden" name="usuario" value="<?php echo $usuario_logueado;?>"/>
                 <div class="form-group col-md-3">
                   <label for="inputDedicacion">Dedicacion</label>
                   <input type="number" min="1" max="100" class="form-control" name="dedicacion" id="inputEmail4" placeholder="0 al 100" requerid>

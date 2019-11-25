@@ -16,20 +16,15 @@ if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 	require('vendor/php/sesiones.php');
 }
 
-$getUsuario= $_GET["usuario"];
-$query_usuario= mysqli_query($enlace, "SELECT u.usuariominusculas, u.nombre, u.id_rol, rol, d.dedicacion, d.fecha as fecha_dedicacion FROM usuarios u
-                                        INNER JOIN roles r ON r.id_rol=u.id_rol
-                                        INNER JOIN dedicaciones d ON d.usuario=u.usuariominusculas
-                                        WHERE d.fecha=(SELECT MAX(fecha) from dedicaciones where usuario='$getUsuario') AND usuariominusculas='$getUsuario'");
+$usuario= $_GET["usuario"];
+$query_usuario= mysqli_query($enlace, "SELECT id_usuario, nombre FROM usuarios 
+                                       WHERE usuario='$usuario'");
                              
 foreach($query_usuario AS $row){
-    $usuario = $row['usuariominusculas'];
-    $nombre = $row['nombre'];
-    $rol = $row['rol'];
-    $id_rol = $row['id_rol'];
-    $dedicacion = $row['dedicacion'];
-    $fecha_dedicacion = $row['fecha_dedicacion'];
+  $id_usuario = $row['id_usuario'];  
+  $nombre = $row['nombre'];
 }?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,13 +37,14 @@ foreach($query_usuario AS $row){
 <body id="bg-imagen">
   <div class="container">
     <div class="card card-register mx-auto mt-5">
-      <div class="card-header">Modificar datos del usuario</div>
+      <div class="card-header">Modificar datos del usuario<?php echo $id_usuario; ?> </div>
       <div class="card-body">
         <form action="vendor/php/modificar.php" method="POST">
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Nombre de usuario</label>
-            <input type="text" class="form-control" id="inputNombreUsuario" name="usuario" placeholder="<?php echo ucfirst($usuario);?>" readonly>
+          <label for="exampleFormControlSelect1">Nombre de usuario</label>
+           <input type="text" class="form-control" id="inputNombreUsuario" name="usuario" placeholder="<?php echo ucfirst($usuario);?>">
           </div>
+          <input type="hidden" name="idusuario" value="<?php echo$id_usuario;?>">
           <div class="form-group">
               <label for="inputCuit">Nombre Completo Actual</label>   
               <input type="text" class="form-control" id="inputNombre" placeholder="<?php echo "$nombre";?>" maxlength="25" disabled>
@@ -57,31 +53,13 @@ foreach($query_usuario AS $row){
             <div class="form-group col-md-6">
               <label for="inputCuit"> Cambiar nombre</label>
               <input type="text" class="form-control" id="inputNombre" placeholder="Nuevo nombre/s" name="nombre" maxlength="25" required>
-              <p>*Ingrese el nombre que quedará</p>
+              <p>*Ingrese el nombre que quedara</p>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6"> 
               <label for="inputPassword4">Cambiar apellido/s</label>
               <input type="text" class="form-control" id="inputApellido" name="apellido" placeholder="Nuevo apellido/s" maxlength="20" required>
-              <p>*Ingrese el apellido que quedará</p>
+              <p>*Ingrese el apellido que quedara</p>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="rol">Selección de rol</label>
-            <select name="rol" class="form-control" id="rol" required>
-              <option value="<?php echo "$id_rol";?>"><?php echo "$rol";?> </option>
-              <option value="2">Usuario</option>
-              <option value="1">Administrador</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="inputDedicacion">Dedicacion</label>
-                <input type="number" min="1" max="100" class="form-control" name="dedicacion" id="inputEmail4" placeholder="0 al 100">
-              </div>
-              <div class="form-group date form_datetime col-md-9 col-sm-9">
-                  <label class="control-label" for="datetimepicker-default">Fecha</label>
-                  <input type='text' class="form-control" id='datetimepicker1' name="fecha_dedicacion" placeholder="Ingresar fecha.." />
-              </div>
           </div>
           <div class="form-row">
               <div class="form-group col-md-9  col-sm-9">
@@ -110,11 +88,18 @@ foreach($query_usuario AS $row){
               pattern="[A-Za-z0-9]{8,45}" title="Letras y números. Tamaño mínimo: 8. Tamaño máximo: 45">
             </div>
           </div>
-          <button type="submit" class="btn btn-primary w-100">Guardar cambios</button>
-        </form>
-        <div class="text-center">
-          <a class="d-block" href="matriz_privilegios.php">Volver a tabla de usuarios</a>
-        </div>  
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Guardar cambios</button>
+              <?php 
+                if ($_SESSION['usuario']=="Admin"){
+                   echo '<a href="matriz_privilegios.php" type="button" class="btn btn-primary">Volver</button></a>';
+               }else
+                   echo '<a href="perfil.php" type="button" class="btn btn-primary">Volver</button></a>';
+              ?>
+              </form> 
+            </div>
+          </div>
+           
       </div>
     </div>
   </div>

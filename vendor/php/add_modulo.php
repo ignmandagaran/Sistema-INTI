@@ -19,17 +19,24 @@ include ("conexion.php");
     $visible  = 1;
     
     if($asistentes<1){
-      print "<script>alert(\"No se pudo guardar el registro. Debe haber al menos 1 asistente.\");window.location='../../new_modulo.php';</script>";
+      $mensajeError = "<script>alert(\"No se pudo guardar el registro. Debe haber al menos 1 asistente.\");window.location='../../new_modulo.php';</script>";
+      exit($mensajeError);
     }
 
     if($empresas<0){
-      print "<script>alert(\"No se pudo guardar el registro. El número de empresas no puede ser negativo.\");window.location='../../new_modulo.php';</script>";
+      $mensajeError = "<script>alert(\"No se pudo guardar el registro. El número de empresas no puede ser negativo.\");window.location='../../new_modulo.php';</script>";
+      exit($mensajeError);
     }
     
-    for($i=0; $i<COUNT($docentes); $i++){
-      $docentes[$i];
+    if($docentes!=NULL){
+      for($i=0; $i<COUNT($docentes); $i++){
+        $docentes[$i];
+      }
+      $usuarios= implode($docentes , ', ');
+    }else{
+      $mensajeError = "<script>alert(\"No se pudo guardar el registro. No se selecciono ningún docente.\");window.location='../../new_modulo.php';</script>";
+      exit($mensajeError);
     }
-    $usuarios= implode($docentes , ', ');
 
     $consultaIgual = mysqli_query($enlace, "SELECT * FROM modulos WHERE titulo_modulo='$titulo'");
     if(mysqli_num_rows($consultaIgual) == 0){
